@@ -134,7 +134,7 @@ class HomeDossierCard extends StatelessWidget {
           SizedBox(height: 20.h),
           SizedBox(
             width: double.infinity,
-            height: 48.h,
+            height: 50.h,
             child: ElevatedButton(
               onPressed: () => context.push(dossier.route),
               style: ElevatedButton.styleFrom(
