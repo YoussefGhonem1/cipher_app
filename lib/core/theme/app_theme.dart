@@ -103,9 +103,7 @@ class AppTheme {
           disabledBackgroundColor: AppColors.surfaceContainerHighest,
           disabledForegroundColor: AppColors.outline,
           elevation: 0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-          ),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           textStyle: const TextStyle(
             fontFamily: 'Bebas Neue',
@@ -119,9 +117,7 @@ class AppTheme {
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.primary,
           side: const BorderSide(color: AppColors.metallicSilver, width: 1),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-          ),
+          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           textStyle: const TextStyle(
             fontFamily: 'Bebas Neue',
@@ -166,7 +162,7 @@ class AppTheme {
           color: AppColors.onSurfaceVariant,
         ),
       ),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: AppColors.deepCharcoal,
         elevation: 0,
         shape: RoundedRectangleBorder(
