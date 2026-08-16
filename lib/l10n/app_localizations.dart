@@ -137,19 +137,19 @@ abstract class AppLocalizations {
   /// No description provided for @homeLoadError.
   ///
   /// In en, this message translates to:
-  /// **'Unable to load games right now.'**
+  /// **'Unable to load data right now.'**
   String get homeLoadError;
 
   /// No description provided for @retry.
   ///
   /// In en, this message translates to:
-  /// **'Retry'**
+  /// **'RETRY'**
   String get retry;
 
   /// No description provided for @noGamesAvailable.
   ///
   /// In en, this message translates to:
-  /// **'No games available yet.'**
+  /// **'No dossiers currently available.'**
   String get noGamesAvailable;
 
   /// No description provided for @gameCategory.
@@ -197,13 +197,13 @@ abstract class AppLocalizations {
   /// No description provided for @spyfallTitle.
   ///
   /// In en, this message translates to:
-  /// **'SPYFALL'**
+  /// **'THE SPY'**
   String get spyfallTitle;
 
   /// No description provided for @spyfallDescription.
   ///
   /// In en, this message translates to:
-  /// **'Identify the infiltrator before time runs out. Trust is a liability.'**
+  /// **'Identify the infiltrator before time runs out. Trust no one.'**
   String get spyfallDescription;
 
   /// No description provided for @spyfallPlayers.
@@ -245,8 +245,284 @@ abstract class AppLocalizations {
   /// No description provided for @gameUnderConstruction.
   ///
   /// In en, this message translates to:
-  /// **'This game is under construction and will be playable soon.'**
+  /// **'This dossier is currently classified. Available soon.'**
   String get gameUnderConstruction;
+
+  /// No description provided for @spyfallMissionParam.
+  ///
+  /// In en, this message translates to:
+  /// **'MISSION_PARAM'**
+  String get spyfallMissionParam;
+
+  /// No description provided for @spyfallOperativesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'OPERATIVES'**
+  String get spyfallOperativesTitle;
+
+  /// No description provided for @spyfallLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unable to load data right now.'**
+  String get spyfallLoadError;
+
+  /// No description provided for @spyfallSelectOperatives.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT NUMBER OF FIELD AGENTS (3-8)'**
+  String get spyfallSelectOperatives;
+
+  /// No description provided for @spyfallMissionDurationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MISSION_DURATION'**
+  String get spyfallMissionDurationTitle;
+
+  /// No description provided for @spyfallSelectDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT EXTRACTION WINDOW'**
+  String get spyfallSelectDuration;
+
+  /// No description provided for @spyfallInitiateMission.
+  ///
+  /// In en, this message translates to:
+  /// **'INITIATE'**
+  String get spyfallInitiateMission;
+
+  /// No description provided for @spyfallDurationMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} MINS'**
+  String spyfallDurationMinutes(int count);
+
+  /// No description provided for @spyfallPassDevice.
+  ///
+  /// In en, this message translates to:
+  /// **'PASS THE DEVICE'**
+  String get spyfallPassDevice;
+
+  /// No description provided for @spyfallPassToPlayer.
+  ///
+  /// In en, this message translates to:
+  /// **'PASS TO PLAYER {index}'**
+  String spyfallPassToPlayer(int index);
+
+  /// No description provided for @spyfallIAmPlayer.
+  ///
+  /// In en, this message translates to:
+  /// **'I AM PLAYER {index}'**
+  String spyfallIAmPlayer(int index);
+
+  /// No description provided for @spyfallHiddenBriefing.
+  ///
+  /// In en, this message translates to:
+  /// **'IDENTITY ENCRYPTED'**
+  String get spyfallHiddenBriefing;
+
+  /// No description provided for @spyfallRoleSpy.
+  ///
+  /// In en, this message translates to:
+  /// **'YOU ARE THE SPY'**
+  String get spyfallRoleSpy;
+
+  /// No description provided for @spyfallRoleAgent.
+  ///
+  /// In en, this message translates to:
+  /// **'YOU ARE AN AGENT'**
+  String get spyfallRoleAgent;
+
+  /// No description provided for @spyfallRoleNoLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'LOCATION UNKNOWN'**
+  String get spyfallRoleNoLocation;
+
+  /// No description provided for @spyfallNextPlayer.
+  ///
+  /// In en, this message translates to:
+  /// **'NEXT PLAYER'**
+  String get spyfallNextPlayer;
+
+  /// No description provided for @spyfallStartInterrogation.
+  ///
+  /// In en, this message translates to:
+  /// **'START INTERROGATION'**
+  String get spyfallStartInterrogation;
+
+  /// No description provided for @spyfallTimeRemaining.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME REMAINING'**
+  String get spyfallTimeRemaining;
+
+  /// No description provided for @spyfallPossibleLocations.
+  ///
+  /// In en, this message translates to:
+  /// **'POSSIBLE LOCATIONS'**
+  String get spyfallPossibleLocations;
+
+  /// No description provided for @spyfallIntelLevelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'INTEL_LEVEL'**
+  String get spyfallIntelLevelLabel;
+
+  /// No description provided for @spyfallLocationEmbassy.
+  ///
+  /// In en, this message translates to:
+  /// **'EMBASSY'**
+  String get spyfallLocationEmbassy;
+
+  /// No description provided for @spyfallLocationSubmarine.
+  ///
+  /// In en, this message translates to:
+  /// **'SUBMARINE'**
+  String get spyfallLocationSubmarine;
+
+  /// No description provided for @spyfallLocationResearchLab.
+  ///
+  /// In en, this message translates to:
+  /// **'RESEARCH LAB'**
+  String get spyfallLocationResearchLab;
+
+  /// No description provided for @spyfallLocationNightclub.
+  ///
+  /// In en, this message translates to:
+  /// **'NIGHTCLUB'**
+  String get spyfallLocationNightclub;
+
+  /// No description provided for @spyfallLocationSecretBase.
+  ///
+  /// In en, this message translates to:
+  /// **'SECRET BASE'**
+  String get spyfallLocationSecretBase;
+
+  /// No description provided for @spyfallLocationBank.
+  ///
+  /// In en, this message translates to:
+  /// **'BANK'**
+  String get spyfallLocationBank;
+
+  /// No description provided for @spyfallLocationHospital.
+  ///
+  /// In en, this message translates to:
+  /// **'HOSPITAL'**
+  String get spyfallLocationHospital;
+
+  /// No description provided for @spyfallLocationSpaceStation.
+  ///
+  /// In en, this message translates to:
+  /// **'SPACE STATION'**
+  String get spyfallLocationSpaceStation;
+
+  /// No description provided for @spyfallLocationPirateShip.
+  ///
+  /// In en, this message translates to:
+  /// **'PIRATE SHIP'**
+  String get spyfallLocationPirateShip;
+
+  /// No description provided for @spyfallLocationCircus.
+  ///
+  /// In en, this message translates to:
+  /// **'CIRCUS'**
+  String get spyfallLocationCircus;
+
+  /// No description provided for @spyfallLocationPoliceStation.
+  ///
+  /// In en, this message translates to:
+  /// **'POLICE STATION'**
+  String get spyfallLocationPoliceStation;
+
+  /// No description provided for @spyfallLocationSchool.
+  ///
+  /// In en, this message translates to:
+  /// **'SCHOOL'**
+  String get spyfallLocationSchool;
+
+  /// No description provided for @spyfallLocationPassengerTrain.
+  ///
+  /// In en, this message translates to:
+  /// **'PASSENGER TRAIN'**
+  String get spyfallLocationPassengerTrain;
+
+  /// No description provided for @spyfallLocationHauntedHouse.
+  ///
+  /// In en, this message translates to:
+  /// **'HAUNTED HOUSE'**
+  String get spyfallLocationHauntedHouse;
+
+  /// No description provided for @spyfallLocationFilmStudio.
+  ///
+  /// In en, this message translates to:
+  /// **'FILM STUDIO'**
+  String get spyfallLocationFilmStudio;
+
+  /// No description provided for @spyfallLocationArcticStation.
+  ///
+  /// In en, this message translates to:
+  /// **'ARCTIC STATION'**
+  String get spyfallLocationArcticStation;
+
+  /// No description provided for @spyfallLocationMuseum.
+  ///
+  /// In en, this message translates to:
+  /// **'MUSEUM'**
+  String get spyfallLocationMuseum;
+
+  /// No description provided for @spyfallLocationStadium.
+  ///
+  /// In en, this message translates to:
+  /// **'STADIUM'**
+  String get spyfallLocationStadium;
+
+  /// No description provided for @spyfallLocationRestaurant.
+  ///
+  /// In en, this message translates to:
+  /// **'RESTAURANT'**
+  String get spyfallLocationRestaurant;
+
+  /// No description provided for @spyfallLocationCasino.
+  ///
+  /// In en, this message translates to:
+  /// **'CASINO'**
+  String get spyfallLocationCasino;
+
+  /// No description provided for @spyfallLocationAirport.
+  ///
+  /// In en, this message translates to:
+  /// **'AIRPORT'**
+  String get spyfallLocationAirport;
+
+  /// No description provided for @spyfallIntelCritical.
+  ///
+  /// In en, this message translates to:
+  /// **'CRITICAL'**
+  String get spyfallIntelCritical;
+
+  /// No description provided for @spyfallIntelHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'HIGH'**
+  String get spyfallIntelHigh;
+
+  /// No description provided for @spyfallIntelMid.
+  ///
+  /// In en, this message translates to:
+  /// **'MODERATE'**
+  String get spyfallIntelMid;
+
+  /// No description provided for @spyfallIntelLow.
+  ///
+  /// In en, this message translates to:
+  /// **'LOW'**
+  String get spyfallIntelLow;
+
+  /// No description provided for @spyfallIntelConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'CONFIRMED'**
+  String get spyfallIntelConfirmed;
 }
 
 class _AppLocalizationsDelegate
