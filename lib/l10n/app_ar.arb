@@ -1,27 +1,94 @@
 {
   "appName": "شفرة - صفر",
-  "activeDossiers": "الملفات النشطة",
-  "systemStatus": "حالة النظام: متصل. بانتظار اختيار العميل.",
-  "initiatePlay": "بدء العملية",
-  "reveal": "كشف",
-  "terminate": "إنهاء",
-  "homeLoadError": "تعذر تحميل الألعاب حاليا.",
+  "activeDossiers": "الملفات المتاحة",
+  "systemStatus": "حالة النظام: متصل. في انتظار تحديد المهمة.",
+  "initiatePlay": "بدء اللعبه",
+  "reveal": "كشف الهوية",
+  "terminate": "إجهاض المهمة",
+  "homeLoadError": "فشل الاتصال بقاعدة البيانات.",
   "retry": "إعادة المحاولة",
-  "noGamesAvailable": "لا توجد ألعاب متاحة حاليا.",
-  "gameCategory": "خداع",
-  "activeTag": "نشط",
-  "operatives": "اللاعبون",
+  "noGamesAvailable": "لا توجد مهام متاحة حالياً.",
+  "gameCategory": "تخفي وذكاء",
+  "activeTag": "متاح",
+  "operatives": "العملاء",
   "durationLabel": "المدة",
-  "gamesTab": "الألعاب",
-  "ranksTab": "الرتب",
+  "gamesTab": "المهام",
+  "ranksTab": "التصنيف",
   "assetsTab": "الموارد",
-  "spyfallTitle": "سباي فول",
-  "spyfallDescription": "حدد المتسلل قبل انتهاء الوقت. الثقة مسؤولية.",
-  "spyfallPlayers": "3-8 لاعبين",
-  "spyfallDuration": "15 دقيقة",
-  "charadesTitle": "بروتوكول الحركة",
-  "charadesDescription": "حلل سيناريوهات سينمائية عالية التأثير لتحقيق أفضلية تكتيكية.",
-  "charadesPlayers": "4+ لاعبين",
-  "charadesDuration": "10 دقائق",
-  "gameUnderConstruction": "هذه اللعبة قيد التطوير وستتوفر قريبا."
+  "spyfallTitle": "الجاسوس",
+  "spyfallDescription": "اكشف العميل المندس قبل نفاذ الوقت. إياك أن تثق بأحد.",
+  "spyfallPlayers": "٣-٨ عملاء",
+  "spyfallDuration": "١٥ دقيقة",
+  "charadesTitle": "أكشن (بدون كلام)",
+  "charadesDescription": "لعبة بدون كلام الكلاسيكية، مجهزة بمشاهد سينمائية حماسية.",
+  "charadesPlayers": "+٤ عملاء",
+  "charadesDuration": "١٠ دقائق",
+  "gameUnderConstruction": "المهمة قيد التجهيز، ستكون متاحة قريباً.",
+  "spyfallMissionParam": "إعدادات المهمة",
+  "spyfallOperativesTitle": "عدد العملاء",
+  "spyfallLoadError": "فشل الاتصال بقاعدة البيانات.",
+  "spyfallSelectOperatives": "حدد عدد العناصر المشاركة (٣-٨)",
+  "spyfallMissionDurationTitle": "مدة المهمة",
+  "spyfallSelectDuration": "حدد وقت الاستخراج",
+  "spyfallInitiateMission": "بدء المهمة",
+  "spyfallDurationMinutes": "{count} دقائق",
+  "@spyfallDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallPassDevice": "سلم الجهاز",
+  "spyfallPassToPlayer": "سلم الجهاز للعميل رقم {index}",
+  "@spyfallPassToPlayer": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallIAmPlayer": "أنا العميل رقم {index}",
+  "@spyfallIAmPlayer": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallHiddenBriefing": "الهوية مشفرة",
+  "spyfallRoleSpy": "أنت الجاسوس",
+  "spyfallRoleAgent": "أنت عميل شريف",
+  "spyfallRoleNoLocation": "الوجهة مجهولة",
+  "spyfallNextPlayer": "العميل التالي",
+  "spyfallStartInterrogation": "بدء الاستجواب",
+  "spyfallTimeRemaining": "الوقت المتبقي للانسحاب",
+  "spyfallPossibleLocations": "بنك الأهداف (المواقع)",
+  "spyfallIntelLevelLabel": "مستوى السرية",
+  "spyfallLocationEmbassy": "السفارة",
+  "spyfallLocationSubmarine": "الغواصة",
+  "spyfallLocationResearchLab": "مختبر الأبحاث",
+  "spyfallLocationNightclub": "الملهى الليلي",
+  "spyfallLocationSecretBase": "القاعدة السرية",
+  "spyfallLocationBank": "البنك",
+  "spyfallLocationHospital": "المستشفى",
+  "spyfallLocationSpaceStation": "محطة فضاء",
+  "spyfallLocationPirateShip": "سفينة قراصنة",
+  "spyfallLocationCircus": "السيرك",
+  "spyfallLocationPoliceStation": "قسم الشرطة",
+  "spyfallLocationSchool": "المدرسة",
+  "spyfallLocationPassengerTrain": "قطار ركاب",
+  "spyfallLocationHauntedHouse": "منزل مهجور",
+  "spyfallLocationFilmStudio": "استوديو تصوير",
+  "spyfallLocationArcticStation": "محطة قطبية",
+  "spyfallLocationMuseum": "المتحف",
+  "spyfallLocationStadium": "الملعب",
+  "spyfallLocationRestaurant": "المطعم",
+  "spyfallLocationCasino": "الكازينو",
+  "spyfallLocationAirport": "المطار",
+  "spyfallIntelCritical": "حرج",
+  "spyfallIntelHigh": "عالي",
+  "spyfallIntelMid": "متوسط",
+  "spyfallIntelLow": "منخفض",
+  "spyfallIntelConfirmed": "مؤكد"
 }

@@ -1,4 +1,4 @@
-package com.example.cipher
+package com.cipher.sifr
 
 import io.flutter.embedding.android.FlutterActivity
 
