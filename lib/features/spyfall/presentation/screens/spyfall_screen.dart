@@ -14,6 +14,63 @@ import '../widgets/spyfall_setup_view.dart';
 class SpyfallScreen extends StatelessWidget {
   const SpyfallScreen({super.key});
 
+  void _showRulesSheet(BuildContext context) {
+    final theme = Theme.of(context);
+
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.deepCharcoal,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            left: 24.w,
+            right: 24.w,
+            top: 24.h,
+            bottom: MediaQuery.of(context).padding.bottom + 24.h,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Icon(Icons.help_outline, color: AppColors.neonAmber),
+                  SizedBox(width: 12.w),
+                  Text(
+                    context.l10n.how_to_play,
+                    style: theme.textTheme.headlineSmall?.copyWith(
+                      color: AppColors.neonAmber,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.h),
+              Text(
+                context.l10n.spyfallRules,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  height: 1.8,
+                  color: AppColors.onSurface,
+                ),
+              ),
+              SizedBox(height: 32.h),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(context.l10n.got_it),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -23,6 +80,12 @@ class SpyfallScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(context.l10n.spyfallMissionParam),
           centerTitle: false,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.help_outline, color: AppColors.outline),
+              onPressed: () => _showRulesSheet(context),
+            ),
+          ],
         ),
         body: SafeArea(
           child: Center(

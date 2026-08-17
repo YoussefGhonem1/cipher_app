@@ -71,7 +71,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get spyfallDuration => '15 MINS';
 
   @override
-  String get charadesTitle => 'ACTION PROTOCOL';
+  String get charadesTitle => 'DECRYPTION GAME';
 
   @override
   String get charadesDescription =>
@@ -230,4 +230,92 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get spyfallIntelConfirmed => 'CONFIRMED';
+
+  @override
+  String get select_intel_category => 'SELECT INTEL CATEGORY';
+
+  @override
+  String get awaiting_tactical_protocol =>
+      'AWAITING TACTICAL PROTOCOL SELECTION...';
+
+  @override
+  String get action_movies => 'ACTION MOVIES';
+
+  @override
+  String get action_movies_desc =>
+      'Analyze high-impact cinematic scenarios for tactical advantage.';
+
+  @override
+  String get survival_gear => 'SURVIVAL GEAR';
+
+  @override
+  String get survival_gear_desc =>
+      'Review specialized equipment parameters and field deployment stats.';
+
+  @override
+  String get public_figures => 'PUBLIC FIGURES';
+
+  @override
+  String get public_figures_desc =>
+      'Identify key targets, assets, and liabilities in the current theater.';
+
+  @override
+  String get global_hotspots => 'GLOBAL HOTSPOTS';
+
+  @override
+  String get global_hotspots_desc =>
+      'Geopolitical analysis of active operational zones.';
+
+  @override
+  String get intel_high => 'INTEL: HIGH';
+
+  @override
+  String get intel_moderate => 'INTEL: MODERATE';
+
+  @override
+  String get intel_classified => 'INTEL: CLASSIFIED';
+
+  @override
+  String get start_mission => 'START MISSION';
+
+  @override
+  String get place_device => 'PLACE DEVICE';
+
+  @override
+  String get on_forehead => 'ON FOREHEAD';
+
+  @override
+  String get tilt_down_correct => '↓ TILT DOWN = CORRECT ↓';
+
+  @override
+  String get tilt_up_pass => '↑ TILT UP = PASS ↑';
+
+  @override
+  String get time => 'TIME';
+
+  @override
+  String get score => 'SCORE';
+
+  @override
+  String get system_log => 'SYSTEM.LOG';
+
+  @override
+  String get terminated => 'TERMINATED';
+
+  @override
+  String get decrypted => 'DECRYPTED';
+
+  @override
+  String get how_to_play => 'HOW TO PLAY';
+
+  @override
+  String get charades_rules =>
+      '1. Select your mission intel (Category).\n2. Place the device on your forehead facing your team.\n3. Your team will act out the word on the screen without speaking.\n4. If you guess correctly, tilt the device DOWN.\n5. If you want to pass, tilt the device UP.\n6. Score as many points as possible before extraction time runs out!';
+
+  @override
+  String get got_it => 'ACKNOWLEDGED';
+
+  @override
+  String get spyfallRules =>
+      '1. A secret location is chosen known to everyone except the \'Spy\'.\n2. Players take turns asking each other questions about the location.\n3. Questions must be subtle to avoid revealing the location to the spy.\n4. The spy tries to deduce the location without getting caught, while agents try to expose them.\n5. The round ends upon voting or if the spy correctly guesses the location!';
 }

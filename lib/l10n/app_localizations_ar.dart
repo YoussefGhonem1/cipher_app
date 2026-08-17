@@ -30,7 +30,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeLoadError => 'حصلت مشكلة في تحميل البيانات.';
 
   @override
-  String get retry => 'حاول تاني';
+  String get retry => 'إعادة المحاولة';
 
   @override
   String get noGamesAvailable => 'مفيش ألعاب متاحة حاليًا.';
@@ -229,4 +229,87 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get spyfallIntelConfirmed => 'مؤكد';
+
+  @override
+  String get select_intel_category => 'اختار ملف المهمة';
+
+  @override
+  String get awaiting_tactical_protocol => 'في انتظار تحديد البروتوكول...';
+
+  @override
+  String get action_movies => 'أفلام أكشن وإثارة';
+
+  @override
+  String get action_movies_desc => 'حلل مواقف سينمائية مليانة أكشن ومطاردات.';
+
+  @override
+  String get survival_gear => 'معدات نجاة';
+
+  @override
+  String get survival_gear_desc => 'راجع أدوات النجاة والمعدات التكتيكية.';
+
+  @override
+  String get public_figures => 'شخصيات عامة';
+
+  @override
+  String get public_figures_desc => 'حدد الأهداف والشخصيات المهمة في الساحة.';
+
+  @override
+  String get global_hotspots => 'مناطق ساخنة';
+
+  @override
+  String get global_hotspots_desc => 'تحليل جيوسياسي للمناطق النشطة حالياً.';
+
+  @override
+  String get intel_high => 'مستوى المعلومات: عالي';
+
+  @override
+  String get intel_moderate => 'مستوى المعلومات: متوسط';
+
+  @override
+  String get intel_classified => 'مستوى المعلومات: سري جداً';
+
+  @override
+  String get start_mission => 'ابدأ المهمة';
+
+  @override
+  String get place_device => 'حط الموبايل';
+
+  @override
+  String get on_forehead => 'على راسك';
+
+  @override
+  String get tilt_down_correct => 'نزل الموبايل لتحت = صح';
+
+  @override
+  String get tilt_up_pass => 'ارفع الموبايل لفوق = باس';
+
+  @override
+  String get time => 'الوقت';
+
+  @override
+  String get score => 'النتيجة';
+
+  @override
+  String get system_log => 'سجل النظام';
+
+  @override
+  String get terminated => 'انتهت';
+
+  @override
+  String get decrypted => 'ملفات اتفكت';
+
+  @override
+  String get how_to_play => 'طريقة اللعب';
+
+  @override
+  String get charades_rules =>
+      '١- اختار ملف المهمة (القسم).\n٢- حط الموبايل على راسك بحيث الشاشة تكون باصة لأصحابك.\n٣- أصحابك هيمثلوا الكلمة اللي على الشاشة من غير ما يتكلموا.\n٤- لو خمنت الكلمة صح، نزل الموبايل لتحت.\n٥- لو معرفتش وعايز تفوت الكلمة، ارفع الموبايل لفوق.\n٦- جمع أكبر عدد من النقط قبل ما الوقت يخلص!';
+
+  @override
+  String get got_it => 'علم ويُنفذ';
+
+  @override
+  String get spyfallRules =>
+      '١- يتم اختيار موقع سري يعلمه الجميع ما عدا \'الجاسوس\'.\n٢- يبدأ اللاعبون بتوجيه أسئلة لبعضهم البعض حول المكان.\n٣- يجب أن تكون الأسئلة ذكية وغير مباشرة لتجنب كشف المكان للجاسوس.\n٤- يحاول الجاسوس معرفة المكان دون أن يتم كشفه، بينما يحاول اللاعبون كشفه.\n٥- تنتهي الجولة بالتصويت أو عندما يخمن الجاسوس المكان الصحيح!';
 }
