@@ -12,37 +12,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appName => 'شفرة - صفر';
 
   @override
-  String get activeDossiers => 'الملفات النشطة';
+  String get activeDossiers => 'الألعاب المتاحة';
 
   @override
-  String get systemStatus => 'حالة النظام: متصل. بانتظار اختيار العميل.';
+  String get systemStatus => 'النظام يعمل. اختر لعبتك وابدأ التحدي.';
 
   @override
-  String get initiatePlay => 'بدء العملية';
+  String get initiatePlay => 'يلا نبدأ';
 
   @override
-  String get reveal => 'كشف';
+  String get reveal => 'اكشف هويتك';
 
   @override
-  String get terminate => 'إنهاء';
+  String get terminate => 'إنهاء اللعبة';
 
   @override
-  String get homeLoadError => 'تعذر تحميل الألعاب حاليا.';
+  String get homeLoadError => 'حصلت مشكلة في تحميل البيانات.';
 
   @override
-  String get retry => 'إعادة المحاولة';
+  String get retry => 'حاول تاني';
 
   @override
-  String get noGamesAvailable => 'لا توجد ألعاب متاحة حاليا.';
+  String get noGamesAvailable => 'مفيش ألعاب متاحة حاليًا.';
 
   @override
-  String get gameCategory => 'خداع';
+  String get gameCategory => 'خداع وذكاء';
 
   @override
-  String get activeTag => 'نشط';
+  String get activeTag => 'متاحة';
 
   @override
-  String get operatives => 'اللاعبون';
+  String get operatives => 'اللاعبين';
 
   @override
   String get durationLabel => 'المدة';
@@ -51,37 +51,182 @@ class AppLocalizationsAr extends AppLocalizations {
   String get gamesTab => 'الألعاب';
 
   @override
-  String get ranksTab => 'الرتب';
+  String get ranksTab => 'الترتيب';
 
   @override
-  String get assetsTab => 'الموارد';
+  String get assetsTab => 'المحتوى';
 
   @override
-  String get spyfallTitle => 'سباي فول';
+  String get spyfallTitle => 'الجاسوس';
 
   @override
   String get spyfallDescription =>
-      'حدد المتسلل قبل انتهاء الوقت. الثقة مسؤولية.';
+      'اعرف مين الجاسوس قبل ما الوقت يخلص... وخلي بالك، مش كل اللي حواليك تقدر تثق فيه.';
 
   @override
-  String get spyfallPlayers => '3-8 لاعبين';
+  String get spyfallPlayers => '٣-٨ لاعبين';
 
   @override
-  String get spyfallDuration => '15 دقيقة';
+  String get spyfallDuration => '١٥ دقيقة';
 
   @override
-  String get charadesTitle => 'بروتوكول الحركة';
+  String get charadesTitle => 'تمثيل صامت';
 
   @override
   String get charadesDescription =>
-      'حلل سيناريوهات سينمائية عالية التأثير لتحقيق أفضلية تكتيكية.';
+      'مثّل وخلي أصحابك يخمنوا. مواقف ومشاهد حماسية، والكلام ممنوع!';
 
   @override
-  String get charadesPlayers => '4+ لاعبين';
+  String get charadesPlayers => '٤ لاعبين أو أكثر';
 
   @override
-  String get charadesDuration => '10 دقائق';
+  String get charadesDuration => '١٠ دقائق';
 
   @override
-  String get gameUnderConstruction => 'هذه اللعبة قيد التطوير وستتوفر قريبا.';
+  String get gameUnderConstruction =>
+      'اللعبة دي لسه تحت التجهيز، وهتكون متاحة قريب.';
+
+  @override
+  String get spyfallMissionParam => 'إعدادات الجولة';
+
+  @override
+  String get spyfallOperativesTitle => 'عدد اللاعبين';
+
+  @override
+  String get spyfallLoadError => 'حصلت مشكلة في تحميل بيانات اللعبة.';
+
+  @override
+  String get spyfallSelectOperatives => 'اختار عدد اللاعبين (٣-٨)';
+
+  @override
+  String get spyfallMissionDurationTitle => 'مدة الجولة';
+
+  @override
+  String get spyfallSelectDuration => 'اختار مدة الجولة';
+
+  @override
+  String get spyfallInitiateMission => 'ابدأ الجولة';
+
+  @override
+  String spyfallDurationMinutes(int count) {
+    return '$count دقيقة';
+  }
+
+  @override
+  String get spyfallPassDevice => 'مرّر الموبايل';
+
+  @override
+  String spyfallPassToPlayer(int index) {
+    return 'مرّر الموبايل للاعب رقم $index';
+  }
+
+  @override
+  String spyfallIAmPlayer(int index) {
+    return 'أنا اللاعب رقم $index';
+  }
+
+  @override
+  String get spyfallHiddenBriefing => 'هويتك سرية';
+
+  @override
+  String get spyfallRoleSpy => 'أنت الجاسوس';
+
+  @override
+  String get spyfallRoleAgent => 'أنت لاعب عادي';
+
+  @override
+  String get spyfallRoleNoLocation => 'الموقع مش معروف';
+
+  @override
+  String get spyfallNextPlayer => 'اللاعب التالي';
+
+  @override
+  String get spyfallStartInterrogation => 'ابدأ الاستجواب';
+
+  @override
+  String get spyfallTimeRemaining => 'الوقت المتبقي';
+
+  @override
+  String get spyfallPossibleLocations => 'المواقع المحتملة';
+
+  @override
+  String get spyfallIntelLevelLabel => 'مستوى المعلومات';
+
+  @override
+  String get spyfallLocationEmbassy => 'السفارة';
+
+  @override
+  String get spyfallLocationSubmarine => 'الغواصة';
+
+  @override
+  String get spyfallLocationResearchLab => 'معمل الأبحاث';
+
+  @override
+  String get spyfallLocationNightclub => 'الملهى الليلي';
+
+  @override
+  String get spyfallLocationSecretBase => 'القاعدة السرية';
+
+  @override
+  String get spyfallLocationBank => 'البنك';
+
+  @override
+  String get spyfallLocationHospital => 'المستشفى';
+
+  @override
+  String get spyfallLocationSpaceStation => 'محطة الفضاء';
+
+  @override
+  String get spyfallLocationPirateShip => 'سفينة القراصنة';
+
+  @override
+  String get spyfallLocationCircus => 'السيرك';
+
+  @override
+  String get spyfallLocationPoliceStation => 'قسم الشرطة';
+
+  @override
+  String get spyfallLocationSchool => 'المدرسة';
+
+  @override
+  String get spyfallLocationPassengerTrain => 'قطار الركاب';
+
+  @override
+  String get spyfallLocationHauntedHouse => 'البيت المسكون';
+
+  @override
+  String get spyfallLocationFilmStudio => 'استوديو التصوير';
+
+  @override
+  String get spyfallLocationArcticStation => 'المحطة القطبية';
+
+  @override
+  String get spyfallLocationMuseum => 'المتحف';
+
+  @override
+  String get spyfallLocationStadium => 'الملعب';
+
+  @override
+  String get spyfallLocationRestaurant => 'المطعم';
+
+  @override
+  String get spyfallLocationCasino => 'الكازينو';
+
+  @override
+  String get spyfallLocationAirport => 'المطار';
+
+  @override
+  String get spyfallIntelCritical => 'خطير جدًا';
+
+  @override
+  String get spyfallIntelHigh => 'مرتفع';
+
+  @override
+  String get spyfallIntelMid => 'متوسط';
+
+  @override
+  String get spyfallIntelLow => 'منخفض';
+
+  @override
+  String get spyfallIntelConfirmed => 'مؤكد';
 }

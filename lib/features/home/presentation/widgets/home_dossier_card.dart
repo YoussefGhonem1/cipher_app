@@ -134,7 +134,7 @@ class HomeDossierCard extends StatelessWidget {
           SizedBox(height: 20.h),
           SizedBox(
             width: double.infinity,
-            height: 48.h,
+            height: 50.h,
             child: ElevatedButton(
               onPressed: () => context.push(dossier.route),
               style: ElevatedButton.styleFrom(
@@ -144,20 +144,26 @@ class HomeDossierCard extends StatelessWidget {
                   borderRadius: BorderRadius.zero,
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    context.l10n.initiatePlay,
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      fontSize: 18.sp,
-                      letterSpacing: 1.2,
+              child: Directionality(
+                textDirection: TextDirection.rtl,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      context.l10n.initiatePlay,
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0,
+                        height: 1.2,
+                        color: AppColors.pitchBlack,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 8.w),
-                  const Icon(Icons.play_arrow, size: 18),
-                ],
+                    SizedBox(width: 8.w),
+                    const Icon(Icons.play_arrow, size: 18),
+                  ],
+                ),
               ),
             ),
           ),

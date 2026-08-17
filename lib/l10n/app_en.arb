@@ -5,9 +5,9 @@
   "initiatePlay": "INITIATE PLAY",
   "reveal": "REVEAL",
   "terminate": "TERMINATE",
-  "homeLoadError": "Unable to load games right now.",
-  "retry": "Retry",
-  "noGamesAvailable": "No games available yet.",
+  "homeLoadError": "Unable to load data right now.",
+  "retry": "RETRY",
+  "noGamesAvailable": "No dossiers currently available.",
   "gameCategory": "DECEPTION",
   "activeTag": "ACTIVE",
   "operatives": "OPERATIVES",
@@ -15,13 +15,80 @@
   "gamesTab": "GAMES",
   "ranksTab": "RANKS",
   "assetsTab": "ASSETS",
-  "spyfallTitle": "SPYFALL",
-  "spyfallDescription": "Identify the infiltrator before time runs out. Trust is a liability.",
+  "spyfallTitle": "THE SPY",
+  "spyfallDescription": "Identify the infiltrator before time runs out. Trust no one.",
   "spyfallPlayers": "3-8 PLAYERS",
   "spyfallDuration": "15 MINS",
   "charadesTitle": "ACTION PROTOCOL",
   "charadesDescription": "Analyze high-impact cinematic scenarios for tactical advantage.",
   "charadesPlayers": "4+ PLAYERS",
   "charadesDuration": "10 MINS",
-  "gameUnderConstruction": "This game is under construction and will be playable soon."
+  "gameUnderConstruction": "This dossier is currently classified. Available soon.",
+  "spyfallMissionParam": "MISSION_PARAM",
+  "spyfallOperativesTitle": "OPERATIVES",
+  "spyfallLoadError": "Unable to load data right now.",
+  "spyfallSelectOperatives": "SELECT NUMBER OF FIELD AGENTS (3-8)",
+  "spyfallMissionDurationTitle": "MISSION_DURATION",
+  "spyfallSelectDuration": "SELECT EXTRACTION WINDOW",
+  "spyfallInitiateMission": "INITIATE",
+  "spyfallDurationMinutes": "{count} MINS",
+  "@spyfallDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallPassDevice": "PASS THE DEVICE",
+  "spyfallPassToPlayer": "PASS TO PLAYER {index}",
+  "@spyfallPassToPlayer": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallIAmPlayer": "I AM PLAYER {index}",
+  "@spyfallIAmPlayer": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallHiddenBriefing": "IDENTITY ENCRYPTED",
+  "spyfallRoleSpy": "YOU ARE THE SPY",
+  "spyfallRoleAgent": "YOU ARE AN AGENT",
+  "spyfallRoleNoLocation": "LOCATION UNKNOWN",
+  "spyfallNextPlayer": "NEXT PLAYER",
+  "spyfallStartInterrogation": "START INTERROGATION",
+  "spyfallTimeRemaining": "TIME REMAINING",
+  "spyfallPossibleLocations": "POSSIBLE LOCATIONS",
+  "spyfallIntelLevelLabel": "INTEL_LEVEL",
+  "spyfallLocationEmbassy": "EMBASSY",
+  "spyfallLocationSubmarine": "SUBMARINE",
+  "spyfallLocationResearchLab": "RESEARCH LAB",
+  "spyfallLocationNightclub": "NIGHTCLUB",
+  "spyfallLocationSecretBase": "SECRET BASE",
+  "spyfallLocationBank": "BANK",
+  "spyfallLocationHospital": "HOSPITAL",
+  "spyfallLocationSpaceStation": "SPACE STATION",
+  "spyfallLocationPirateShip": "PIRATE SHIP",
+  "spyfallLocationCircus": "CIRCUS",
+  "spyfallLocationPoliceStation": "POLICE STATION",
+  "spyfallLocationSchool": "SCHOOL",
+  "spyfallLocationPassengerTrain": "PASSENGER TRAIN",
+  "spyfallLocationHauntedHouse": "HAUNTED HOUSE",
+  "spyfallLocationFilmStudio": "FILM STUDIO",
+  "spyfallLocationArcticStation": "ARCTIC STATION",
+  "spyfallLocationMuseum": "MUSEUM",
+  "spyfallLocationStadium": "STADIUM",
+  "spyfallLocationRestaurant": "RESTAURANT",
+  "spyfallLocationCasino": "CASINO",
+  "spyfallLocationAirport": "AIRPORT",
+  "spyfallIntelCritical": "CRITICAL",
+  "spyfallIntelHigh": "HIGH",
+  "spyfallIntelMid": "MODERATE",
+  "spyfallIntelLow": "LOW",
+  "spyfallIntelConfirmed": "CONFIRMED"
 }

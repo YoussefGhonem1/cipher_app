@@ -1,27 +1,94 @@
 {
   "appName": "شفرة - صفر",
-  "activeDossiers": "الملفات النشطة",
-  "systemStatus": "حالة النظام: متصل. بانتظار اختيار العميل.",
-  "initiatePlay": "بدء العملية",
-  "reveal": "كشف",
-  "terminate": "إنهاء",
-  "homeLoadError": "تعذر تحميل الألعاب حاليا.",
-  "retry": "إعادة المحاولة",
-  "noGamesAvailable": "لا توجد ألعاب متاحة حاليا.",
-  "gameCategory": "خداع",
-  "activeTag": "نشط",
-  "operatives": "اللاعبون",
+  "activeDossiers": "الألعاب المتاحة",
+  "systemStatus": "النظام يعمل. اختر لعبتك وابدأ التحدي.",
+  "initiatePlay": "يلا نبدأ",
+  "reveal": "اكشف هويتك",
+  "terminate": "إنهاء اللعبة",
+  "homeLoadError": "حصلت مشكلة في تحميل البيانات.",
+  "retry": "حاول تاني",
+  "noGamesAvailable": "مفيش ألعاب متاحة حاليًا.",
+  "gameCategory": "خداع وذكاء",
+  "activeTag": "متاحة",
+  "operatives": "اللاعبين",
   "durationLabel": "المدة",
   "gamesTab": "الألعاب",
-  "ranksTab": "الرتب",
-  "assetsTab": "الموارد",
-  "spyfallTitle": "سباي فول",
-  "spyfallDescription": "حدد المتسلل قبل انتهاء الوقت. الثقة مسؤولية.",
-  "spyfallPlayers": "3-8 لاعبين",
-  "spyfallDuration": "15 دقيقة",
-  "charadesTitle": "بروتوكول الحركة",
-  "charadesDescription": "حلل سيناريوهات سينمائية عالية التأثير لتحقيق أفضلية تكتيكية.",
-  "charadesPlayers": "4+ لاعبين",
-  "charadesDuration": "10 دقائق",
-  "gameUnderConstruction": "هذه اللعبة قيد التطوير وستتوفر قريبا."
+  "ranksTab": "الترتيب",
+  "assetsTab": "المحتوى",
+  "spyfallTitle": "الجاسوس",
+  "spyfallDescription": "اعرف مين الجاسوس قبل ما الوقت يخلص... وخلي بالك، مش كل اللي حواليك تقدر تثق فيه.",
+  "spyfallPlayers": "٣-٨ لاعبين",
+  "spyfallDuration": "١٥ دقيقة",
+  "charadesTitle": "تمثيل صامت",
+  "charadesDescription": "مثّل وخلي أصحابك يخمنوا. مواقف ومشاهد حماسية، والكلام ممنوع!",
+  "charadesPlayers": "٤ لاعبين أو أكثر",
+  "charadesDuration": "١٠ دقائق",
+  "gameUnderConstruction": "اللعبة دي لسه تحت التجهيز، وهتكون متاحة قريب.",
+  "spyfallMissionParam": "إعدادات الجولة",
+  "spyfallOperativesTitle": "عدد اللاعبين",
+  "spyfallLoadError": "حصلت مشكلة في تحميل بيانات اللعبة.",
+  "spyfallSelectOperatives": "اختار عدد اللاعبين (٣-٨)",
+  "spyfallMissionDurationTitle": "مدة الجولة",
+  "spyfallSelectDuration": "اختار مدة الجولة",
+  "spyfallInitiateMission": "ابدأ الجولة",
+  "spyfallDurationMinutes": "{count} دقيقة",
+  "@spyfallDurationMinutes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallPassDevice": "مرّر الموبايل",
+  "spyfallPassToPlayer": "مرّر الموبايل للاعب رقم {index}",
+  "@spyfallPassToPlayer": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallIAmPlayer": "أنا اللاعب رقم {index}",
+  "@spyfallIAmPlayer": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "spyfallHiddenBriefing": "هويتك سرية",
+  "spyfallRoleSpy": "أنت الجاسوس",
+  "spyfallRoleAgent": "أنت لاعب عادي",
+  "spyfallRoleNoLocation": "الموقع مش معروف",
+  "spyfallNextPlayer": "اللاعب التالي",
+  "spyfallStartInterrogation": "ابدأ الاستجواب",
+  "spyfallTimeRemaining": "الوقت المتبقي",
+  "spyfallPossibleLocations": "المواقع المحتملة",
+  "spyfallIntelLevelLabel": "مستوى المعلومات",
+  "spyfallLocationEmbassy": "السفارة",
+  "spyfallLocationSubmarine": "الغواصة",
+  "spyfallLocationResearchLab": "معمل الأبحاث",
+  "spyfallLocationNightclub": "الملهى الليلي",
+  "spyfallLocationSecretBase": "القاعدة السرية",
+  "spyfallLocationBank": "البنك",
+  "spyfallLocationHospital": "المستشفى",
+  "spyfallLocationSpaceStation": "محطة الفضاء",
+  "spyfallLocationPirateShip": "سفينة القراصنة",
+  "spyfallLocationCircus": "السيرك",
+  "spyfallLocationPoliceStation": "قسم الشرطة",
+  "spyfallLocationSchool": "المدرسة",
+  "spyfallLocationPassengerTrain": "قطار الركاب",
+  "spyfallLocationHauntedHouse": "البيت المسكون",
+  "spyfallLocationFilmStudio": "استوديو التصوير",
+  "spyfallLocationArcticStation": "المحطة القطبية",
+  "spyfallLocationMuseum": "المتحف",
+  "spyfallLocationStadium": "الملعب",
+  "spyfallLocationRestaurant": "المطعم",
+  "spyfallLocationCasino": "الكازينو",
+  "spyfallLocationAirport": "المطار",
+  "spyfallIntelCritical": "خطير جدًا",
+  "spyfallIntelHigh": "مرتفع",
+  "spyfallIntelMid": "متوسط",
+  "spyfallIntelLow": "منخفض",
+  "spyfallIntelConfirmed": "مؤكد"
 }
