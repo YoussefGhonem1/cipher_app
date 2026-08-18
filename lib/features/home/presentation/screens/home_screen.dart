@@ -9,9 +9,17 @@ import '../widgets/home_bottom_nav.dart';
 import '../widgets/home_dossiers_list.dart';
 import '../widgets/home_header.dart';
 import '../widgets/home_system_status.dart';
+import '../widgets/games_guide_layout.dart'; 
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +30,7 @@ class HomeScreen extends StatelessWidget {
         body: SafeArea(
           child: LayoutBuilder(
             builder: (context, constraints) {
-              final horizontalPadding = constraints.maxWidth < 420
-                  ? 16.w
-                  : 24.w;
+              final horizontalPadding = constraints.maxWidth < 420 ? 16.w : 24.w;
 
               return Center(
                 child: ConstrainedBox(
@@ -41,7 +47,15 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(height: 24.h),
                         const HomeSystemStatus(),
                         SizedBox(height: 24.h),
-                        const Expanded(child: HomeDossiersList()),
+                        Expanded(
+                          child: IndexedStack(
+                            index: _currentIndex,
+                            children: const [
+                              HomeDossiersList(), 
+                              GamesGuideLayout(), 
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -50,7 +64,14 @@ class HomeScreen extends StatelessWidget {
             },
           ),
         ),
-        bottomNavigationBar: const HomeBottomNav(),
+        bottomNavigationBar: HomeBottomNav(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

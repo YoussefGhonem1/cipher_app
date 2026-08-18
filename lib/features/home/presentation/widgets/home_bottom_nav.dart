@@ -1,11 +1,17 @@
+import 'package:cipher/core/utils/l10n_extensions.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/utils/l10n_extensions.dart';
 import 'home_nav_item.dart';
 
 class HomeBottomNav extends StatelessWidget {
-  const HomeBottomNav({super.key});
+  final int currentIndex;
+  final ValueChanged<int> onTap;
+
+  const HomeBottomNav({
+    required this.currentIndex,
+    required this.onTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,24 +21,25 @@ class HomeBottomNav extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: HomeNavItem(
-              icon: Icons.grid_view,
-              label: context.l10n.gamesTab,
-              isSelected: true,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => onTap(0),
+              child: HomeNavItem(
+                icon: Icons.grid_view,
+                label: context.l10n.gamesTab,
+                isSelected: currentIndex == 0,
+              ),
             ),
           ),
           Expanded(
-            child: HomeNavItem(
-              icon: Icons.military_tech_outlined,
-              label: context.l10n.ranksTab,
-              isSelected: false,
-            ),
-          ),
-          Expanded(
-            child: HomeNavItem(
-              icon: Icons.folder_outlined,
-              label: context.l10n.assetsTab,
-              isSelected: false,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => onTap(1),
+              child: HomeNavItem(
+                icon: Icons.menu_book_outlined, 
+                label: context.l10n.assetsTab, 
+                isSelected: currentIndex == 1,
+              ),
             ),
           ),
         ],
