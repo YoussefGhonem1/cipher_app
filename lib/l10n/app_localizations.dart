@@ -221,7 +221,7 @@ abstract class AppLocalizations {
   /// No description provided for @charadesTitle.
   ///
   /// In en, this message translates to:
-  /// **'ACTION PROTOCOL'**
+  /// **'DECRYPTION GAME'**
   String get charadesTitle;
 
   /// No description provided for @charadesDescription.
@@ -523,6 +523,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'CONFIRMED'**
   String get spyfallIntelConfirmed;
+
+  /// No description provided for @select_intel_category.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT INTEL CATEGORY'**
+  String get select_intel_category;
+
+  /// No description provided for @awaiting_tactical_protocol.
+  ///
+  /// In en, this message translates to:
+  /// **'AWAITING TACTICAL PROTOCOL SELECTION...'**
+  String get awaiting_tactical_protocol;
+
+  /// No description provided for @action_movies.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTION MOVIES'**
+  String get action_movies;
+
+  /// No description provided for @action_movies_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyze high-impact cinematic scenarios for tactical advantage.'**
+  String get action_movies_desc;
+
+  /// No description provided for @survival_gear.
+  ///
+  /// In en, this message translates to:
+  /// **'SURVIVAL GEAR'**
+  String get survival_gear;
+
+  /// No description provided for @survival_gear_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Review specialized equipment parameters and field deployment stats.'**
+  String get survival_gear_desc;
+
+  /// No description provided for @public_figures.
+  ///
+  /// In en, this message translates to:
+  /// **'PUBLIC FIGURES'**
+  String get public_figures;
+
+  /// No description provided for @public_figures_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify key targets, assets, and liabilities in the current theater.'**
+  String get public_figures_desc;
+
+  /// No description provided for @global_hotspots.
+  ///
+  /// In en, this message translates to:
+  /// **'GLOBAL HOTSPOTS'**
+  String get global_hotspots;
+
+  /// No description provided for @global_hotspots_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Geopolitical analysis of active operational zones.'**
+  String get global_hotspots_desc;
+
+  /// No description provided for @intel_high.
+  ///
+  /// In en, this message translates to:
+  /// **'INTEL: HIGH'**
+  String get intel_high;
+
+  /// No description provided for @intel_moderate.
+  ///
+  /// In en, this message translates to:
+  /// **'INTEL: MODERATE'**
+  String get intel_moderate;
+
+  /// No description provided for @intel_classified.
+  ///
+  /// In en, this message translates to:
+  /// **'INTEL: CLASSIFIED'**
+  String get intel_classified;
+
+  /// No description provided for @start_mission.
+  ///
+  /// In en, this message translates to:
+  /// **'START MISSION'**
+  String get start_mission;
+
+  /// No description provided for @place_device.
+  ///
+  /// In en, this message translates to:
+  /// **'PLACE DEVICE'**
+  String get place_device;
+
+  /// No description provided for @on_forehead.
+  ///
+  /// In en, this message translates to:
+  /// **'ON FOREHEAD'**
+  String get on_forehead;
+
+  /// No description provided for @tilt_down_correct.
+  ///
+  /// In en, this message translates to:
+  /// **'↓ TILT DOWN = CORRECT ↓'**
+  String get tilt_down_correct;
+
+  /// No description provided for @tilt_up_pass.
+  ///
+  /// In en, this message translates to:
+  /// **'↑ TILT UP = PASS ↑'**
+  String get tilt_up_pass;
+
+  /// No description provided for @time.
+  ///
+  /// In en, this message translates to:
+  /// **'TIME'**
+  String get time;
+
+  /// No description provided for @score.
+  ///
+  /// In en, this message translates to:
+  /// **'SCORE'**
+  String get score;
+
+  /// No description provided for @system_log.
+  ///
+  /// In en, this message translates to:
+  /// **'SYSTEM.LOG'**
+  String get system_log;
+
+  /// No description provided for @terminated.
+  ///
+  /// In en, this message translates to:
+  /// **'TERMINATED'**
+  String get terminated;
+
+  /// No description provided for @decrypted.
+  ///
+  /// In en, this message translates to:
+  /// **'DECRYPTED'**
+  String get decrypted;
+
+  /// No description provided for @how_to_play.
+  ///
+  /// In en, this message translates to:
+  /// **'HOW TO PLAY'**
+  String get how_to_play;
+
+  /// No description provided for @charades_rules.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Select your mission intel (Category).\n2. Place the device on your forehead facing your team.\n3. Your team will act out the word on the screen without speaking.\n4. If you guess correctly, tilt the device DOWN.\n5. If you want to pass, tilt the device UP.\n6. Score as many points as possible before extraction time runs out!'**
+  String get charades_rules;
+
+  /// No description provided for @got_it.
+  ///
+  /// In en, this message translates to:
+  /// **'ACKNOWLEDGED'**
+  String get got_it;
+
+  /// No description provided for @spyfallRules.
+  ///
+  /// In en, this message translates to:
+  /// **'1. A secret location is chosen known to everyone except the \'Spy\'.\n2. Players take turns asking each other questions about the location.\n3. Questions must be subtle to avoid revealing the location to the spy.\n4. The spy tries to deduce the location without getting caught, while agents try to expose them.\n5. The round ends upon voting or if the spy correctly guesses the location!'**
+  String get spyfallRules;
 }
 
 class _AppLocalizationsDelegate

@@ -25,6 +25,10 @@ dependencies:
   hive_flutter: ^1.1.0
 
   cupertino_icons: ^1.0.8
+  equatable: ^2.1.0
+  dartz: ^0.10.1
+  sensors_plus: ^7.1.0
+  easy_localization: ^3.0.8
 
 dev_dependencies:
   flutter_test:
