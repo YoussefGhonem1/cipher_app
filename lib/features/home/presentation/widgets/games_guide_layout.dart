@@ -29,6 +29,11 @@ class GamesGuideLayout extends StatelessWidget {
           title: context.l10n.charadesTitle,
           rules: context.l10n.charades_rules,
         ),
+        SizedBox(height: 20.h),
+        _GuideSection(
+          title: context.l10n.vaultTitle,
+          rules: context.l10n.vaultRules,
+        ),
       ],
     );
   }

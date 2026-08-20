@@ -318,4 +318,112 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get spyfallRules =>
       '1. A secret location is chosen known to everyone except the \'Spy\'.\n2. Players take turns asking each other questions about the location.\n3. Questions must be subtle to avoid revealing the location to the spy.\n4. The spy tries to deduce the location without getting caught, while agents try to expose them.\n5. The round ends upon voting or if the spy correctly guesses the location!';
+
+  @override
+  String get vaultTitle => 'THE VAULT';
+
+  @override
+  String get inactiveTag => 'DOWNLOAD REQUIRED';
+
+  @override
+  String get vaultDescription =>
+      'Solve the cipher or explode. Fast-paced local multiplayer decryption challenge.';
+
+  @override
+  String get vaultPlayers => '1-10 PLAYERS';
+
+  @override
+  String get vaultDuration => '5 MINS';
+
+  @override
+  String get downloadRequired => 'DOWNLOAD REQUIRED';
+
+  @override
+  String get downloadGame => 'DOWNLOAD GAME';
+
+  @override
+  String get vaultSetupStatus => 'SYSTEM STATUS: OPERATIONAL';
+
+  @override
+  String get vaultSetupMission => 'MISSION: VAULT-09';
+
+  @override
+  String get vaultSetupSubtitle => 'SOLVE THE CIPHER OR EXPLODE';
+
+  @override
+  String get vaultSetupPlayerCount => 'PLAYER COUNT';
+
+  @override
+  String get vaultSetupStartMission => 'START MISSION';
+
+  @override
+  String get vaultRules =>
+      '1. Set the number of operatives.\n2. The system will display a cipher.\n3. Pass the device to the assigned operative.\n4. Decrypt the code using the numpad before the timer expires.\n5. Failure results in immediate elimination.';
+
+  @override
+  String get vaultThreatLevel => 'THREAT LEVEL: CRITICAL';
+
+  @override
+  String get vaultDecryptionClue => 'DECRYPTION CLUE';
+
+  @override
+  String get vaultHintPrefix => 'HINT: ';
+
+  @override
+  String get vaultPassDeviceTitle => 'PASS DEVICE TO NEXT PLAYER';
+
+  @override
+  String get vaultHandOffStatus => 'AGENT IDENTITY HAND-OFF IN PROGRESS...';
+
+  @override
+  String get vaultIdentityConfirmed => 'IDENTITY CONFIRMED';
+
+  @override
+  String get vaultMissionFailed => 'MISSION FAILED';
+
+  @override
+  String get vaultPlayerEliminated => 'PLAYER ELIMINATED';
+
+  @override
+  String get vaultCipherUnsolved =>
+      'THE CIPHER REMAINED UNSOLVED. TACTICAL FAILURE.';
+
+  @override
+  String get vaultSystemLockdown => '> SYSTEM LOCKDOWN INITIATED...';
+
+  @override
+  String get vaultPlayAgain => 'PLAY AGAIN';
+
+  @override
+  String get vaultClr => 'CLR';
+
+  @override
+  String get vaultEnt => 'ENT';
+
+  @override
+  String get vaultConnectionSecure =>
+      'CONNECTION: SECURE ..... ENCRYPTION: ACTIVE\nAWAITING INPUT';
+
+  @override
+  String get vaultMissionSuccess => 'MISSION ACCOMPLISHED';
+
+  @override
+  String get vaultCipherSolved => 'CIPHER DECRYPTED SUCCESSFULLY.';
+
+  @override
+  String get vaultSystemUnlocked => '> SYSTEM UNLOCKED...';
+
+  @override
+  String get vaultContinueGame => 'CONTINUE GAME';
+
+  @override
+  String vaultPlayerWon(int index) {
+    return 'PLAYER $index VICTORIOUS';
+  }
+
+  @override
+  String get vaultAllEliminated => 'ALL OPERATIVES ELIMINATED';
+
+  @override
+  String get vaultNoSurvivors => 'NO SURVIVORS. THE VAULT REMAINS SEALED.';
 }

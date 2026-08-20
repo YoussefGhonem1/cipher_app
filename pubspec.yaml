@@ -2,7 +2,7 @@ name: cipher
 description: "A high-stakes cinematic multiplayer party game app."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.2+3
 
 environment:
   sdk: ^3.9.0
@@ -29,6 +29,8 @@ dependencies:
   dartz: ^0.10.1
   sensors_plus: ^7.1.0
   easy_localization: ^3.0.8
+  firebase_core: ^4.13.0
+  cloud_firestore: ^6.8.0
 
 dev_dependencies:
   flutter_test:

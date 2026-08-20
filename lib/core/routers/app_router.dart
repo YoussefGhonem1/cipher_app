@@ -1,3 +1,4 @@
+import 'package:cipher/features/the_vault/presentation/screens/vault_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,14 +18,12 @@ class AppRouter {
   static const String charadesPrep = '/charades-prep';
   static const String charadesActive = '/charades-active';
   static const String charadesReport = '/charades-report';
+  static const String theVault = '/the-vault';
 
   static final GoRouter router = GoRouter(
     initialLocation: home,
     routes: [
-      GoRoute(
-        path: home,
-        builder: (context, state) => const HomeScreen(),
-      ),
+      GoRoute(path: home, builder: (context, state) => const HomeScreen()),
       GoRoute(
         path: spyfallSetup,
         builder: (context, state) => const SpyfallScreen(),
@@ -65,6 +64,10 @@ class AppRouter {
             child: const CharadesReportScreen(),
           );
         },
+      ),
+      GoRoute(
+        path: theVault,
+        builder: (context, state) => const VaultScreen(),
       ),
     ],
     errorBuilder: (context, state) => const HomeScreen(),

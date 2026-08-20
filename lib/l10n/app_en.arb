@@ -118,5 +118,46 @@
   "how_to_play": "HOW TO PLAY",
   "charades_rules": "1. Select your mission intel (Category).\n2. Place the device on your forehead facing your team.\n3. Your team will act out the word on the screen without speaking.\n4. If you guess correctly, tilt the device DOWN.\n5. If you want to pass, tilt the device UP.\n6. Score as many points as possible before extraction time runs out!",
   "got_it": "ACKNOWLEDGED",
-  "spyfallRules": "1. A secret location is chosen known to everyone except the 'Spy'.\n2. Players take turns asking each other questions about the location.\n3. Questions must be subtle to avoid revealing the location to the spy.\n4. The spy tries to deduce the location without getting caught, while agents try to expose them.\n5. The round ends upon voting or if the spy correctly guesses the location!"
+  "spyfallRules": "1. A secret location is chosen known to everyone except the 'Spy'.\n2. Players take turns asking each other questions about the location.\n3. Questions must be subtle to avoid revealing the location to the spy.\n4. The spy tries to deduce the location without getting caught, while agents try to expose them.\n5. The round ends upon voting or if the spy correctly guesses the location!",
+  "vaultTitle": "THE VAULT",
+  "inactiveTag": "DOWNLOAD REQUIRED",
+  "vaultDescription": "Solve the cipher or explode. Fast-paced local multiplayer decryption challenge.",
+  "vaultPlayers": "1-10 PLAYERS",
+  "vaultDuration": "5 MINS",
+  "downloadRequired": "DOWNLOAD REQUIRED",
+  "downloadGame": "DOWNLOAD GAME",
+  "vaultSetupStatus": "SYSTEM STATUS: OPERATIONAL",
+  "vaultSetupMission": "MISSION: VAULT-09",
+  "vaultSetupSubtitle": "SOLVE THE CIPHER OR EXPLODE",
+  "vaultSetupPlayerCount": "PLAYER COUNT",
+  "vaultSetupStartMission": "START MISSION",
+  "vaultRules": "1. Set the number of operatives.\n2. The system will display a cipher.\n3. Pass the device to the assigned operative.\n4. Decrypt the code using the numpad before the timer expires.\n5. Failure results in immediate elimination.",
+  "vaultThreatLevel": "THREAT LEVEL: CRITICAL",
+  "vaultDecryptionClue": "DECRYPTION CLUE",
+  "vaultHintPrefix": "HINT: ",
+  "vaultPassDeviceTitle": "PASS DEVICE TO NEXT PLAYER",
+  "vaultHandOffStatus": "AGENT IDENTITY HAND-OFF IN PROGRESS...",
+  "vaultIdentityConfirmed": "IDENTITY CONFIRMED",
+  "vaultMissionFailed": "MISSION FAILED",
+  "vaultPlayerEliminated": "PLAYER ELIMINATED",
+  "vaultCipherUnsolved": "THE CIPHER REMAINED UNSOLVED. TACTICAL FAILURE.",
+  "vaultSystemLockdown": "> SYSTEM LOCKDOWN INITIATED...",
+  "vaultPlayAgain": "PLAY AGAIN",
+  "vaultClr": "CLR",
+  "vaultEnt": "ENT",
+  "vaultConnectionSecure": "CONNECTION: SECURE ..... ENCRYPTION: ACTIVE\nAWAITING INPUT",
+  "vaultMissionSuccess": "MISSION ACCOMPLISHED",
+  "vaultCipherSolved": "CIPHER DECRYPTED SUCCESSFULLY.",
+  "vaultSystemUnlocked": "> SYSTEM UNLOCKED...",
+  "vaultContinueGame": "CONTINUE GAME",
+  "vaultPlayerWon": "PLAYER {index} VICTORIOUS",
+  "vaultAllEliminated": "ALL OPERATIVES ELIMINATED",
+  "vaultNoSurvivors": "NO SURVIVORS. THE VAULT REMAINS SEALED.",
+  "@vaultPlayerWon": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  }
 }
