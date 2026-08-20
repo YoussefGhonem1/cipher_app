@@ -685,6 +685,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'1. A secret location is chosen known to everyone except the \'Spy\'.\n2. Players take turns asking each other questions about the location.\n3. Questions must be subtle to avoid revealing the location to the spy.\n4. The spy tries to deduce the location without getting caught, while agents try to expose them.\n5. The round ends upon voting or if the spy correctly guesses the location!'**
   String get spyfallRules;
+
+  /// No description provided for @vaultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'THE VAULT'**
+  String get vaultTitle;
+
+  /// No description provided for @inactiveTag.
+  ///
+  /// In en, this message translates to:
+  /// **'DOWNLOAD REQUIRED'**
+  String get inactiveTag;
+
+  /// No description provided for @vaultDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the cipher or explode. Fast-paced local multiplayer decryption challenge.'**
+  String get vaultDescription;
+
+  /// No description provided for @vaultPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'1-10 PLAYERS'**
+  String get vaultPlayers;
+
+  /// No description provided for @vaultDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'5 MINS'**
+  String get vaultDuration;
+
+  /// No description provided for @downloadRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'DOWNLOAD REQUIRED'**
+  String get downloadRequired;
+
+  /// No description provided for @downloadGame.
+  ///
+  /// In en, this message translates to:
+  /// **'DOWNLOAD GAME'**
+  String get downloadGame;
+
+  /// No description provided for @vaultSetupStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'SYSTEM STATUS: OPERATIONAL'**
+  String get vaultSetupStatus;
+
+  /// No description provided for @vaultSetupMission.
+  ///
+  /// In en, this message translates to:
+  /// **'MISSION: VAULT-09'**
+  String get vaultSetupMission;
+
+  /// No description provided for @vaultSetupSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SOLVE THE CIPHER OR EXPLODE'**
+  String get vaultSetupSubtitle;
+
+  /// No description provided for @vaultSetupPlayerCount.
+  ///
+  /// In en, this message translates to:
+  /// **'PLAYER COUNT'**
+  String get vaultSetupPlayerCount;
+
+  /// No description provided for @vaultSetupStartMission.
+  ///
+  /// In en, this message translates to:
+  /// **'START MISSION'**
+  String get vaultSetupStartMission;
+
+  /// No description provided for @vaultRules.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Set the number of operatives.\n2. The system will display a cipher.\n3. Pass the device to the assigned operative.\n4. Decrypt the code using the numpad before the timer expires.\n5. Failure results in immediate elimination.'**
+  String get vaultRules;
+
+  /// No description provided for @vaultThreatLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'THREAT LEVEL: CRITICAL'**
+  String get vaultThreatLevel;
+
+  /// No description provided for @vaultDecryptionClue.
+  ///
+  /// In en, this message translates to:
+  /// **'DECRYPTION CLUE'**
+  String get vaultDecryptionClue;
+
+  /// No description provided for @vaultHintPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'HINT: '**
+  String get vaultHintPrefix;
+
+  /// No description provided for @vaultPassDeviceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PASS DEVICE TO NEXT PLAYER'**
+  String get vaultPassDeviceTitle;
+
+  /// No description provided for @vaultHandOffStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'AGENT IDENTITY HAND-OFF IN PROGRESS...'**
+  String get vaultHandOffStatus;
+
+  /// No description provided for @vaultIdentityConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'IDENTITY CONFIRMED'**
+  String get vaultIdentityConfirmed;
+
+  /// No description provided for @vaultMissionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'MISSION FAILED'**
+  String get vaultMissionFailed;
+
+  /// No description provided for @vaultPlayerEliminated.
+  ///
+  /// In en, this message translates to:
+  /// **'PLAYER ELIMINATED'**
+  String get vaultPlayerEliminated;
+
+  /// No description provided for @vaultCipherUnsolved.
+  ///
+  /// In en, this message translates to:
+  /// **'THE CIPHER REMAINED UNSOLVED. TACTICAL FAILURE.'**
+  String get vaultCipherUnsolved;
+
+  /// No description provided for @vaultSystemLockdown.
+  ///
+  /// In en, this message translates to:
+  /// **'> SYSTEM LOCKDOWN INITIATED...'**
+  String get vaultSystemLockdown;
+
+  /// No description provided for @vaultPlayAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'PLAY AGAIN'**
+  String get vaultPlayAgain;
+
+  /// No description provided for @vaultClr.
+  ///
+  /// In en, this message translates to:
+  /// **'CLR'**
+  String get vaultClr;
+
+  /// No description provided for @vaultEnt.
+  ///
+  /// In en, this message translates to:
+  /// **'ENT'**
+  String get vaultEnt;
+
+  /// No description provided for @vaultConnectionSecure.
+  ///
+  /// In en, this message translates to:
+  /// **'CONNECTION: SECURE ..... ENCRYPTION: ACTIVE\nAWAITING INPUT'**
+  String get vaultConnectionSecure;
+
+  /// No description provided for @vaultMissionSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'MISSION ACCOMPLISHED'**
+  String get vaultMissionSuccess;
+
+  /// No description provided for @vaultCipherSolved.
+  ///
+  /// In en, this message translates to:
+  /// **'CIPHER DECRYPTED SUCCESSFULLY.'**
+  String get vaultCipherSolved;
+
+  /// No description provided for @vaultSystemUnlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'> SYSTEM UNLOCKED...'**
+  String get vaultSystemUnlocked;
+
+  /// No description provided for @vaultContinueGame.
+  ///
+  /// In en, this message translates to:
+  /// **'CONTINUE GAME'**
+  String get vaultContinueGame;
+
+  /// No description provided for @vaultPlayerWon.
+  ///
+  /// In en, this message translates to:
+  /// **'PLAYER {index} VICTORIOUS'**
+  String vaultPlayerWon(int index);
+
+  /// No description provided for @vaultAllEliminated.
+  ///
+  /// In en, this message translates to:
+  /// **'ALL OPERATIVES ELIMINATED'**
+  String get vaultAllEliminated;
+
+  /// No description provided for @vaultNoSurvivors.
+  ///
+  /// In en, this message translates to:
+  /// **'NO SURVIVORS. THE VAULT REMAINS SEALED.'**
+  String get vaultNoSurvivors;
 }
 
 class _AppLocalizationsDelegate

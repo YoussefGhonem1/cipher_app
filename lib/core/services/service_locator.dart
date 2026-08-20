@@ -1,3 +1,5 @@
+import 'package:cipher/features/game_sync/cubit/game_sync_cubit.dart';
+import 'package:cipher/features/the_vault/presentation/cubits/vault_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/decryption_game/presentation/cubits/decryption_game_cubit.dart';
@@ -57,5 +59,12 @@ void configureDependencies() {
 
   getIt.registerFactory<DecryptionGameCubit>(
     () => DecryptionGameCubit(getCategoriesUseCase: getIt<GetCategoriesUseCase>()),
+  );
+
+  getIt.registerFactory<GameSyncCubit>(
+    () => GameSyncCubit(),
+  );
+  getIt.registerFactory<VaultCubit>(
+    () => VaultCubit(),
   );
 }

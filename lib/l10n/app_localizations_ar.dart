@@ -312,4 +312,111 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get spyfallRules =>
       '١- يتم اختيار موقع سري يعلمه الجميع ما عدا \'الجاسوس\'.\n٢- يبدأ اللاعبون بتوجيه أسئلة لبعضهم البعض حول المكان.\n٣- يجب أن تكون الأسئلة ذكية وغير مباشرة لتجنب كشف المكان للجاسوس.\n٤- يحاول الجاسوس معرفة المكان دون أن يتم كشفه، بينما يحاول اللاعبون كشفه.\n٥- تنتهي الجولة بالتصويت أو عندما يخمن الجاسوس المكان الصحيح!';
+
+  @override
+  String get vaultTitle => 'الخزنة';
+
+  @override
+  String get inactiveTag => 'تحميل مطلوب';
+
+  @override
+  String get vaultDescription =>
+      'حل الشفرة أو انفجر. تحدي فك التشفير الجماعي السريع.';
+
+  @override
+  String get vaultPlayers => '١-١٠ لاعبين';
+
+  @override
+  String get vaultDuration => '٥ دقائق';
+
+  @override
+  String get downloadRequired => 'تحميل مطلوب';
+
+  @override
+  String get downloadGame => 'تحميل اللعبة';
+
+  @override
+  String get vaultSetupStatus => 'حالة النظام: فعال';
+
+  @override
+  String get vaultSetupMission => 'المهمة: الخزنة-٠٩';
+
+  @override
+  String get vaultSetupSubtitle => 'حل الشفرة أو انفجر';
+
+  @override
+  String get vaultSetupPlayerCount => 'عدد اللاعبين';
+
+  @override
+  String get vaultSetupStartMission => 'بدأ المهمة';
+
+  @override
+  String get vaultRules =>
+      '١. حدد عدد اللاعبين.\n٢. النظام هيعرض شفرة سرية.\n٣. مرر الجهاز للاعب المطلوب.\n٤. حل الشفرة باستخدام اللوحة قبل انتهاء الوقت.\n٥. الفشل في الحل يعني الاستبعاد فوراً.';
+
+  @override
+  String get vaultThreatLevel => 'مستوى التهديد: حرج';
+
+  @override
+  String get vaultDecryptionClue => 'مفتاح فك التشفير';
+
+  @override
+  String get vaultHintPrefix => 'تلميح: ';
+
+  @override
+  String get vaultPassDeviceTitle => 'مرر الجهاز للاعب التالي';
+
+  @override
+  String get vaultHandOffStatus => 'جاري نقل هوية العميل...';
+
+  @override
+  String get vaultIdentityConfirmed => 'تأكيد الهوية';
+
+  @override
+  String get vaultMissionFailed => 'فشلت المهمة';
+
+  @override
+  String get vaultPlayerEliminated => 'تم استبعاد اللاعب';
+
+  @override
+  String get vaultCipherUnsolved => 'فشل فك التشفير. إخفاق تكتيكي.';
+
+  @override
+  String get vaultSystemLockdown => '> تم بدء إغلاق النظام...';
+
+  @override
+  String get vaultPlayAgain => 'العب مجدداً';
+
+  @override
+  String get vaultClr => 'مسح';
+
+  @override
+  String get vaultEnt => 'إدخال';
+
+  @override
+  String get vaultConnectionSecure =>
+      'الاتصال: آمن ..... التشفير: نشط\nفي انتظار الإدخال';
+
+  @override
+  String get vaultMissionSuccess => 'تم إنجاز المهمة';
+
+  @override
+  String get vaultCipherSolved => 'تم فك التشفير بنجاح.';
+
+  @override
+  String get vaultSystemUnlocked => '> تم فتح النظام...';
+
+  @override
+  String get vaultContinueGame => 'استمر في اللعبة';
+
+  @override
+  String vaultPlayerWon(int index) {
+    return 'العميل رقم $index هو الفائز';
+  }
+
+  @override
+  String get vaultAllEliminated => 'تم استبعاد كافة العملاء';
+
+  @override
+  String get vaultNoSurvivors => 'لا يوجد فائز. بقيت الخزنة مغلقة.';
 }

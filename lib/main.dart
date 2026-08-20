@@ -7,10 +7,12 @@ import 'core/services/hive_service.dart';
 import 'core/services/locale_service.dart';
 import 'core/services/service_locator.dart';
 import 'core/theme/app_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await HiveService.init();
   await LocaleService.init();
 
@@ -24,7 +26,7 @@ class CipherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
+    return ScreenUtilInit( 
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,

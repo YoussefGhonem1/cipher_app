@@ -1,3 +1,4 @@
+import 'package:cipher/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,6 +35,12 @@ class HomeHeader extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 12.w),
+              // ElevatedButton(
+              //   onPressed: () async {
+              //     await uploadMassiveLocalizedVaultData();
+              //   },
+              //   child: const Text('Upload'),
+              // ),
               Flexible(
                 child: Text(
                   context.l10n.appName,

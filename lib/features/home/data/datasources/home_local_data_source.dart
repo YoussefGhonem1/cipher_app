@@ -33,6 +33,17 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
       isActive: true,
       route: AppRouter.charadesSetup,
     ),
+    GameDossierModel(
+      id: 'the_vault',
+      title: 'THE VAULT',
+      description:
+          'Solve the cipher or explode. Fast-paced local multiplayer decryption challenge.',
+      intelLevel: 'CRITICAL',
+      playerCount: '1-10 PLAYERS',
+      duration: '5 MINS',
+      isActive: false,
+      route: AppRouter.theVault,
+    ),
   ];
 
   @override
