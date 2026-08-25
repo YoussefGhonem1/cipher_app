@@ -9,6 +9,8 @@ abstract class HomeLocalDataSource {
 
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   static const String _gamesKey = 'cached_games_dossiers';
+  static const String _cacheVersionKey = 'home_cache_version';
+  static const int _currentCacheVersion = 2;
 
   static const List<GameDossierModel> _seedGames = [
     GameDossierModel(
@@ -49,6 +51,14 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
   Future<List<GameDossierModel>> getGamesDossiers() async {
     final box = Hive.box(HiveService.gameBoxName);
+
+    final storedVersion = box.get(_cacheVersionKey, defaultValue: 0) as int;
+
+    if (storedVersion < _currentCacheVersion) {
+      await _storeSeedGames(box);
+      return _seedGames;
+    }
+
     final cachedData = box.get(_gamesKey);
 
     if (cachedData is! List) {
@@ -69,8 +79,9 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
     return decodedList;
   }
 
-  Future<void> _storeSeedGames(Box box) {
-    return box.put(
+  Future<void> _storeSeedGames(Box box) async {
+    await box.put(_cacheVersionKey, _currentCacheVersion);
+    await box.put(
       _gamesKey,
       _seedGames.map((e) => e.toJson()).toList(growable: false),
     );
