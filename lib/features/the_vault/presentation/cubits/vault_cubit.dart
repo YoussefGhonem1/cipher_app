@@ -1,3 +1,4 @@
+// features/the_vault/presentation/cubits/vault_cubit.dart
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
@@ -62,11 +63,17 @@ class VaultCubit extends Cubit<VaultState> {
             }
           }
 
+          List<String> qWrongAnswers = [];
+          if (q['wrong_answers'] != null) {
+            qWrongAnswers = (q['wrong_answers'] as List).map((e) => e.toString()).toList();
+          }
+
           return {
             'id': q['id']?.toString() ?? q['answer'].toString(),
             'instruction': qInstruction,
             'clue': qClue,
             'answer': q['answer'].toString(),
+            'wrong_answers': qWrongAnswers,
             'hint': qHint,
             'category': qCategory,
           };
@@ -108,6 +115,14 @@ class VaultCubit extends Cubit<VaultState> {
     }
   }
 
+  List<String> _generateChoices(Map<String, dynamic> currentQuestion) {
+    final String correctAnswer = currentQuestion['answer'].toString();
+    final List<String> wrongAnswers = (currentQuestion['wrong_answers'] as List<String>?) ?? [];
+    final List<String> choices = [correctAnswer, ...wrongAnswers];
+    choices.shuffle();
+    return choices;
+  }
+
   void startMission(String langCode) {
     loadGameData(langCode);
 
@@ -137,6 +152,7 @@ class VaultCubit extends Cubit<VaultState> {
 
     final initialPlayers = List.generate(state.playerCount, (i) => i + 1);
     final initialScores = {for (var i in initialPlayers) i: 0};
+    final initialChoices = _generateChoices(unplayedQuestions[0]);
 
     if (initialPlayers.length == 1) {
       emit(state.copyWith(
@@ -144,7 +160,7 @@ class VaultCubit extends Cubit<VaultState> {
         activePlayers: initialPlayers,
         currentTurnIndex: 0,
         timeRemaining: 15,
-        enteredCode: '',
+        currentChoices: initialChoices,
         playersUsedHint: [],
         isHintRevealed: false,
         playerScores: initialScores,
@@ -158,6 +174,7 @@ class VaultCubit extends Cubit<VaultState> {
         activePlayers: initialPlayers,
         currentTurnIndex: 0,
         playersUsedHint: [],
+        currentChoices: initialChoices,
         isHintRevealed: false,
         playerScores: initialScores,
         questions: unplayedQuestions,
@@ -170,7 +187,6 @@ class VaultCubit extends Cubit<VaultState> {
     emit(state.copyWith(
       phase: VaultPhase.active,
       timeRemaining: 15,
-      enteredCode: '',
     ));
     _startTimer();
   }
@@ -187,27 +203,14 @@ class VaultCubit extends Cubit<VaultState> {
     });
   }
 
-  void addDigit(String digit) {
-    if (state.questions.isEmpty) return;
-    final answerLength = state.questions[state.currentQuestionIndex]['answer'].length;
-
-    if (state.enteredCode.length < answerLength) {
-      emit(state.copyWith(enteredCode: state.enteredCode + digit));
-    }
-  }
-
-  void clearCode() {
-    emit(state.copyWith(enteredCode: ''));
-  }
-
-  void submitCode() {
+  void submitAnswer(String selectedAnswer) {
     if (state.questions.isEmpty) return;
 
     _timer?.cancel();
     final currentQuestion = state.questions[state.currentQuestionIndex];
-    final currentAnswer = currentQuestion['answer'];
+    final currentAnswer = currentQuestion['answer'].toString();
 
-    if (state.enteredCode == currentAnswer) {
+    if (selectedAnswer == currentAnswer) {
       final box = Hive.box(HiveService.gameBoxName);
       final updatedSolved = List<String>.from(state.solvedQuestionsIds)..add(currentQuestion['id']);
       box.put('vault_solved_questions', updatedSolved);
@@ -223,10 +226,12 @@ class VaultCubit extends Cubit<VaultState> {
         ));
       } else if (state.currentQuestionIndex < state.questions.length - 1) {
         final nextTurn = (state.currentTurnIndex + 1) % state.activePlayers.length;
+        final nextQuestionIdx = state.currentQuestionIndex + 1;
+        final nextChoices = _generateChoices(state.questions[nextQuestionIdx]);
 
         emit(state.copyWith(
-          currentQuestionIndex: state.currentQuestionIndex + 1,
-          enteredCode: '',
+          currentQuestionIndex: nextQuestionIdx,
+          currentChoices: nextChoices,
           currentTurnIndex: nextTurn,
           phase: VaultPhase.passDevice,
           isHintRevealed: false,
@@ -266,6 +271,7 @@ class VaultCubit extends Cubit<VaultState> {
     if (nextQuestionIdx >= state.questions.length) {
       nextQuestionIdx = 0;
     }
+    final nextChoices = _generateChoices(state.questions[nextQuestionIdx]);
 
     if (updatedPlayers.isEmpty) {
       emit(state.copyWith(phase: VaultPhase.failed, activePlayers: []));
@@ -294,7 +300,7 @@ class VaultCubit extends Cubit<VaultState> {
           activePlayers: updatedPlayers,
           currentTurnIndex: 0,
           isHintRevealed: false,
-          enteredCode: '',
+          currentChoices: nextChoices,
           currentQuestionIndex: nextQuestionIdx,
         ));
       }
@@ -308,7 +314,7 @@ class VaultCubit extends Cubit<VaultState> {
         activePlayers: updatedPlayers,
         currentTurnIndex: nextTurn,
         isHintRevealed: false,
-        enteredCode: '',
+        currentChoices: nextChoices,
         currentQuestionIndex: nextQuestionIdx,
       ));
     }
@@ -317,7 +323,6 @@ class VaultCubit extends Cubit<VaultState> {
   void continueAfterElimination() {
     emit(state.copyWith(
       phase: VaultPhase.passDevice,
-      enteredCode: '',
     ));
   }
 
