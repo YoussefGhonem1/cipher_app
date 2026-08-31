@@ -10,23 +10,90 @@ class VaultCubit extends Cubit<VaultState> {
   VaultCubit() : super(const VaultState());
 
   void loadGameData(String langCode) {
-    final box = Hive.box(HiveService.gameBoxName);
-    final gameData = box.get('the_vault');
+    try {
+      final box = Hive.box(HiveService.gameBoxName);
+      final gameData = box.get('the_vault');
 
-    if (gameData != null && gameData['questions'] != null) {
-      List<dynamic> rawQuestions = gameData['questions'];
-      List<Map<String, dynamic>> parsedQuestions = rawQuestions.map((q) {
-        return {
-          'instruction': q['instruction'][langCode] ?? q['instruction']['en'],
-          'clue': q['clue'][langCode] ?? q['clue']['en'],
-          'answer': q['answer'].toString(),
-          'hint': q['hint'][langCode] ?? q['hint']['en'],
-        };
-      }).toList();
+      List<String> loadedSolvedIds = [];
+      final storedSolved = box.get('vault_solved_questions');
+      if (storedSolved != null) {
+        loadedSolvedIds = List<String>.from(storedSolved);
+      }
 
-      parsedQuestions.shuffle();
-      emit(state.copyWith(questions: parsedQuestions, currentQuestionIndex: 0));
+      if (gameData != null && gameData['questions'] != null) {
+        List<dynamic> rawQuestions = gameData['questions'];
+        Set<String> extractedCategories = {};
+
+        List<Map<String, dynamic>> parsedQuestions = rawQuestions.map((q) {
+          String qCategory = 'General';
+          if (q['category'] != null) {
+            if (q['category'] is Map) {
+              qCategory = q['category'][langCode] ?? q['category']['en'] ?? 'General';
+            } else {
+              qCategory = q['category'].toString();
+            }
+          }
+          extractedCategories.add(qCategory);
+
+          String qInstruction = '';
+          if (q['instruction'] != null) {
+            if (q['instruction'] is Map) {
+              qInstruction = q['instruction'][langCode] ?? q['instruction']['en'] ?? '';
+            } else {
+              qInstruction = q['instruction'].toString();
+            }
+          }
+
+          String qClue = '';
+          if (q['clue'] != null) {
+            if (q['clue'] is Map) {
+              qClue = q['clue'][langCode] ?? q['clue']['en'] ?? '';
+            } else {
+              qClue = q['clue'].toString();
+            }
+          }
+
+          String qHint = '';
+          if (q['hint'] != null) {
+            if (q['hint'] is Map) {
+              qHint = q['hint'][langCode] ?? q['hint']['en'] ?? '';
+            } else {
+              qHint = q['hint'].toString();
+            }
+          }
+
+          return {
+            'id': q['id']?.toString() ?? q['answer'].toString(),
+            'instruction': qInstruction,
+            'clue': qClue,
+            'answer': q['answer'].toString(),
+            'hint': qHint,
+            'category': qCategory,
+          };
+        }).toList();
+
+        final mixedCategoryName = langCode == 'ar' ? 'مختلط' : 'Mixed';
+        List<String> finalCategories = [mixedCategoryName, ...extractedCategories.toList()];
+
+        String initialCategory = state.selectedCategory.isEmpty || !finalCategories.contains(state.selectedCategory)
+            ? mixedCategoryName
+            : state.selectedCategory;
+
+        emit(state.copyWith(
+          questions: parsedQuestions,
+          categories: finalCategories,
+          selectedCategory: initialCategory,
+          solvedQuestionsIds: loadedSolvedIds,
+        ));
+      }
+    } catch (e) {
+      final mixedCategoryName = langCode == 'ar' ? 'مختلط' : 'Mixed';
+      emit(state.copyWith(categories: [mixedCategoryName]));
     }
+  }
+
+  void selectCategory(String category) {
+    emit(state.copyWith(selectedCategory: category));
   }
 
   void incrementPlayers() {
@@ -43,6 +110,31 @@ class VaultCubit extends Cubit<VaultState> {
 
   void startMission(String langCode) {
     loadGameData(langCode);
+
+    final mixedCategoryName = langCode == 'ar' ? 'مختلط' : 'Mixed';
+    List<Map<String, dynamic>> categoryQuestions;
+
+    if (state.selectedCategory == mixedCategoryName) {
+      categoryQuestions = List.from(state.questions);
+    } else {
+      categoryQuestions = state.questions.where((q) => q['category'] == state.selectedCategory).toList();
+    }
+
+    var unplayedQuestions = categoryQuestions.where((q) => !state.solvedQuestionsIds.contains(q['id'])).toList();
+
+    if (unplayedQuestions.isEmpty) {
+      unplayedQuestions = categoryQuestions;
+      final box = Hive.box(HiveService.gameBoxName);
+      List<String> newSolved = List.from(state.solvedQuestionsIds);
+      for (var q in categoryQuestions) {
+        newSolved.remove(q['id']);
+      }
+      box.put('vault_solved_questions', newSolved);
+      emit(state.copyWith(solvedQuestionsIds: newSolved));
+    }
+
+    unplayedQuestions.shuffle();
+
     final initialPlayers = List.generate(state.playerCount, (i) => i + 1);
     final initialScores = {for (var i in initialPlayers) i: 0};
 
@@ -56,6 +148,8 @@ class VaultCubit extends Cubit<VaultState> {
         playersUsedHint: [],
         isHintRevealed: false,
         playerScores: initialScores,
+        questions: unplayedQuestions,
+        currentQuestionIndex: 0,
       ));
       _startTimer();
     } else {
@@ -66,6 +160,8 @@ class VaultCubit extends Cubit<VaultState> {
         playersUsedHint: [],
         isHintRevealed: false,
         playerScores: initialScores,
+        questions: unplayedQuestions,
+        currentQuestionIndex: 0,
       ));
     }
   }
@@ -93,8 +189,7 @@ class VaultCubit extends Cubit<VaultState> {
 
   void addDigit(String digit) {
     if (state.questions.isEmpty) return;
-    final answerLength =
-        state.questions[state.currentQuestionIndex]['answer'].length;
+    final answerLength = state.questions[state.currentQuestionIndex]['answer'].length;
 
     if (state.enteredCode.length < answerLength) {
       emit(state.copyWith(enteredCode: state.enteredCode + digit));
@@ -109,22 +204,25 @@ class VaultCubit extends Cubit<VaultState> {
     if (state.questions.isEmpty) return;
 
     _timer?.cancel();
-    final currentAnswer =
-        state.questions[state.currentQuestionIndex]['answer'];
+    final currentQuestion = state.questions[state.currentQuestionIndex];
+    final currentAnswer = currentQuestion['answer'];
 
     if (state.enteredCode == currentAnswer) {
+      final box = Hive.box(HiveService.gameBoxName);
+      final updatedSolved = List<String>.from(state.solvedQuestionsIds)..add(currentQuestion['id']);
+      box.put('vault_solved_questions', updatedSolved);
+
       final newScores = Map<int, int>.from(state.playerScores);
-      newScores[state.currentPlayerId] =
-          (newScores[state.currentPlayerId] ?? 0) + 1;
+      newScores[state.currentPlayerId] = (newScores[state.currentPlayerId] ?? 0) + 1;
 
       if (state.activePlayers.length == 1) {
         emit(state.copyWith(
           phase: VaultPhase.success,
           playerScores: newScores,
+          solvedQuestionsIds: updatedSolved,
         ));
       } else if (state.currentQuestionIndex < state.questions.length - 1) {
-        final nextTurn =
-            (state.currentTurnIndex + 1) % state.activePlayers.length;
+        final nextTurn = (state.currentTurnIndex + 1) % state.activePlayers.length;
 
         emit(state.copyWith(
           currentQuestionIndex: state.currentQuestionIndex + 1,
@@ -133,11 +231,13 @@ class VaultCubit extends Cubit<VaultState> {
           phase: VaultPhase.passDevice,
           isHintRevealed: false,
           playerScores: newScores,
+          solvedQuestionsIds: updatedSolved,
         ));
       } else {
         emit(state.copyWith(
           phase: VaultPhase.success,
           playerScores: newScores,
+          solvedQuestionsIds: updatedSolved,
         ));
       }
     } else {
@@ -158,8 +258,7 @@ class VaultCubit extends Cubit<VaultState> {
 
   void _handleElimination() {
     final updatedPlayers = List<int>.from(state.activePlayers);
-    if (updatedPlayers.isNotEmpty &&
-        state.currentTurnIndex < updatedPlayers.length) {
+    if (updatedPlayers.isNotEmpty && state.currentTurnIndex < updatedPlayers.length) {
       updatedPlayers.removeAt(state.currentTurnIndex);
     }
 
@@ -224,7 +323,12 @@ class VaultCubit extends Cubit<VaultState> {
 
   void resetGame() {
     _timer?.cancel();
-    emit(const VaultState());
+    emit(VaultState(
+      categories: state.categories,
+      selectedCategory: state.selectedCategory,
+      solvedQuestionsIds: state.solvedQuestionsIds,
+      questions: state.questions,
+    ));
   }
 
   @override
