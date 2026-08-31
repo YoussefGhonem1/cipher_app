@@ -30,12 +30,13 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
     _syncCubit = getIt<GameSyncCubit>();
 
     final box = Hive.box(HiveService.gameBoxName);
-    final bool isDownloaded = box.containsKey(widget.dossier.id);
+    final String syncId = widget.dossier.id == 'casino' ? 'the_vault' : widget.dossier.id;
+    final bool isDownloaded = box.containsKey(syncId);
 
     if ((isDownloaded || widget.dossier.isActive) &&
-        widget.dossier.id != 'spyfall' &&
-        widget.dossier.id != 'charades') {
-      _syncCubit.fetchAndSyncGame(widget.dossier.id);
+        syncId != 'spyfall' &&
+        syncId != 'charades') {
+      _syncCubit.fetchAndSyncGame(syncId);
     }
   }
 
@@ -48,7 +49,8 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
   @override
   Widget build(BuildContext context) {
     final box = Hive.box(HiveService.gameBoxName);
-    final bool isInitiallyDownloaded = box.containsKey(widget.dossier.id);
+    final String syncId = widget.dossier.id == 'casino' ? 'the_vault' : widget.dossier.id;
+    final bool isInitiallyDownloaded = box.containsKey(syncId);
 
     return BlocProvider.value(
       value: _syncCubit,
@@ -215,11 +217,8 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
                             if (readyToPlay) {
                               context.push(widget.dossier.route);
                             } else {
-                              if (widget.dossier.id != 'spyfall' &&
-                                  widget.dossier.id != 'charades') {
-                                _syncCubit.fetchAndSyncGame(
-                                  widget.dossier.id,
-                                );
+                              if (syncId != 'spyfall' && syncId != 'charades') {
+                                _syncCubit.fetchAndSyncGame(syncId);
                               }
                             }
                           },
@@ -281,6 +280,8 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
         return context.l10n.charadesTitle;
       case 'the_vault':
         return context.l10n.vaultTitle;
+      case 'casino':
+        return context.l10n.casinoTitle;
       default:
         return game.title;
     }
@@ -297,6 +298,8 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
         return context.l10n.charadesDescription;
       case 'the_vault':
         return context.l10n.vaultDescription;
+      case 'casino':
+        return context.l10n.casinoDescription;
       default:
         return game.description;
     }
@@ -310,6 +313,8 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
         return context.l10n.charadesPlayers;
       case 'the_vault':
         return context.l10n.vaultPlayers;
+      case 'casino':
+        return context.l10n.casinoPlayers;
       default:
         return game.playerCount;
     }
@@ -323,6 +328,8 @@ class _HomeDossierCardState extends State<HomeDossierCard> {
         return context.l10n.charadesDuration;
       case 'the_vault':
         return context.l10n.vaultDuration;
+      case 'casino':
+        return context.l10n.casinoDuration;
       default:
         return game.duration;
     }

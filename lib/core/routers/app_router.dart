@@ -1,4 +1,3 @@
-import 'package:cipher/features/the_vault/presentation/screens/vault_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +9,10 @@ import '../../features/decryption_game/presentation/screens/category_selection_s
 import '../../features/decryption_game/presentation/screens/charades_preparation_screen.dart';
 import '../../features/decryption_game/presentation/screens/charades_active_screen.dart';
 import '../../features/decryption_game/presentation/screens/charades_report_screen.dart';
+import '../../features/the_vault/presentation/screens/vault_screen.dart';
+import '../../features/casino/presentation/cubits/casino_cubit.dart';
+import '../../features/casino/presentation/screens/casino_setup_screen.dart';
+import '../../features/casino/presentation/screens/casino_active_screen.dart';
 
 class AppRouter {
   static const String home = '/';
@@ -19,6 +22,8 @@ class AppRouter {
   static const String charadesActive = '/charades-active';
   static const String charadesReport = '/charades-report';
   static const String theVault = '/the-vault';
+  static const String casinoSetup = '/casino-setup';
+  static const String casinoActive = '/casino-active';
 
   static final GoRouter router = GoRouter(
     initialLocation: home,
@@ -68,6 +73,23 @@ class AppRouter {
       GoRoute(
         path: theVault,
         builder: (context, state) => const VaultScreen(),
+      ),
+      GoRoute(
+        path: casinoSetup,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<CasinoCubit>(),
+          child: const CasinoSetupScreen(),
+        ),
+      ),
+      GoRoute(
+        path: casinoActive,
+        builder: (context, state) {
+          final cubit = state.extra as CasinoCubit;
+          return BlocProvider.value(
+            value: cubit,
+            child: const CasinoActiveScreen(),
+          );
+        },
       ),
     ],
     errorBuilder: (context, state) => const HomeScreen(),

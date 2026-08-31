@@ -159,5 +159,15 @@
         "type": "int"
       }
     }
-  }
+  },
+  "casinoTitle": "CASINO GAMES",
+  "casinoDescription": "Be the Game Master. Test your friends' speed and knowledge.",
+  "casinoPlayers": "3+ PLAYERS",
+  "casinoDuration": "FLEXIBLE",
+  "casinoSetupSubtitle": "YOU ARE THE GAME MASTER",
+  "casinoStartGame": "START HOSTING",
+  "casinoNextQuestion": "NEXT QUESTION",
+  "casinoCorrectAnswer": "CORRECT ANSWER",
+  "casinoCategoryLabel": "Select Category:",
+  "casinoRules": "1. One player holds the device and acts as the Game Master.\n2. The Master selects any category to ask from.\n3. The Master reads the question.\n4. The first player to ring the bell gets to answer.\n5. The Master sees the correct answer to verify."
 }

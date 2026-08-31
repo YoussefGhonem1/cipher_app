@@ -419,4 +419,36 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get vaultNoSurvivors => 'لا يوجد فائز. بقيت الخزنة مغلقة.';
+
+  @override
+  String get casinoTitle => 'كازينو الألعاب';
+
+  @override
+  String get casinoDescription =>
+      'كن أنت الحكم. اختبر سرعة وذكاء أصحابك في الإجابة على الأسئلة.';
+
+  @override
+  String get casinoPlayers => '٣+ لاعبين';
+
+  @override
+  String get casinoDuration => 'مفتوحة';
+
+  @override
+  String get casinoSetupSubtitle => 'أنت الحكم والمتحكم في اللعبة';
+
+  @override
+  String get casinoStartGame => 'ابدأ اللعب';
+
+  @override
+  String get casinoNextQuestion => 'السؤال التالي';
+
+  @override
+  String get casinoCorrectAnswer => 'الإجابة الصحيحة';
+
+  @override
+  String get casinoCategoryLabel => 'اختر القسم:';
+
+  @override
+  String get casinoRules =>
+      '١. لاعب واحد يمسك الموبايل ويكون هو الحكم.\n٢. الحكم يختار القسم اللي هيسأل فيه براحته.\n٣. يقرأ السؤال بصوت عالي.\n٤. اللاعبين الباقيين بيتنافسوا، واللي يرن الجرس الأول بيجاوب.\n٥. الحكم بيظهر له الإجابة الصح والاختيارات لتقييم الإجابة.';
 }
