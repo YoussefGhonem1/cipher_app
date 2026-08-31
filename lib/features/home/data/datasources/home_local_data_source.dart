@@ -10,7 +10,7 @@ abstract class HomeLocalDataSource {
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   static const String _gamesKey = 'cached_games_dossiers';
   static const String _cacheVersionKey = 'home_cache_version';
-  static const int _currentCacheVersion = 2;
+  static const int _currentCacheVersion = 3;
 
   static const List<GameDossierModel> _seedGames = [
     GameDossierModel(
@@ -45,6 +45,17 @@ class HomeLocalDataSourceImpl implements HomeLocalDataSource {
       duration: '5 MINS',
       isActive: false,
       route: AppRouter.theVault,
+    ),
+    GameDossierModel(
+      id: 'casino',
+      title: 'CASINO GAMES',
+      description:
+          'Be the Game Master. Test your friends speed and knowledge.',
+      intelLevel: 'HIGH',
+      playerCount: '3+ PLAYERS',
+      duration: 'FLEXIBLE',
+      isActive: false,
+      route: AppRouter.casinoSetup,
     ),
   ];
 

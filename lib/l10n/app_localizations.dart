@@ -889,6 +889,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'NO SURVIVORS. THE VAULT REMAINS SEALED.'**
   String get vaultNoSurvivors;
+
+  /// No description provided for @casinoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CASINO GAMES'**
+  String get casinoTitle;
+
+  /// No description provided for @casinoDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Be the Game Master. Test your friends\' speed and knowledge.'**
+  String get casinoDescription;
+
+  /// No description provided for @casinoPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'3+ PLAYERS'**
+  String get casinoPlayers;
+
+  /// No description provided for @casinoDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'FLEXIBLE'**
+  String get casinoDuration;
+
+  /// No description provided for @casinoSetupSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'YOU ARE THE GAME MASTER'**
+  String get casinoSetupSubtitle;
+
+  /// No description provided for @casinoStartGame.
+  ///
+  /// In en, this message translates to:
+  /// **'START HOSTING'**
+  String get casinoStartGame;
+
+  /// No description provided for @casinoNextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'NEXT QUESTION'**
+  String get casinoNextQuestion;
+
+  /// No description provided for @casinoCorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'CORRECT ANSWER'**
+  String get casinoCorrectAnswer;
+
+  /// No description provided for @casinoCategoryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Category:'**
+  String get casinoCategoryLabel;
+
+  /// No description provided for @casinoRules.
+  ///
+  /// In en, this message translates to:
+  /// **'1. One player holds the device and acts as the Game Master.\n2. The Master selects any category to ask from.\n3. The Master reads the question.\n4. The first player to ring the bell gets to answer.\n5. The Master sees the correct answer to verify.'**
+  String get casinoRules;
 }
 
 class _AppLocalizationsDelegate

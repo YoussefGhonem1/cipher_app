@@ -426,4 +426,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vaultNoSurvivors => 'NO SURVIVORS. THE VAULT REMAINS SEALED.';
+
+  @override
+  String get casinoTitle => 'CASINO GAMES';
+
+  @override
+  String get casinoDescription =>
+      'Be the Game Master. Test your friends\' speed and knowledge.';
+
+  @override
+  String get casinoPlayers => '3+ PLAYERS';
+
+  @override
+  String get casinoDuration => 'FLEXIBLE';
+
+  @override
+  String get casinoSetupSubtitle => 'YOU ARE THE GAME MASTER';
+
+  @override
+  String get casinoStartGame => 'START HOSTING';
+
+  @override
+  String get casinoNextQuestion => 'NEXT QUESTION';
+
+  @override
+  String get casinoCorrectAnswer => 'CORRECT ANSWER';
+
+  @override
+  String get casinoCategoryLabel => 'Select Category:';
+
+  @override
+  String get casinoRules =>
+      '1. One player holds the device and acts as the Game Master.\n2. The Master selects any category to ask from.\n3. The Master reads the question.\n4. The first player to ring the bell gets to answer.\n5. The Master sees the correct answer to verify.';
 }
