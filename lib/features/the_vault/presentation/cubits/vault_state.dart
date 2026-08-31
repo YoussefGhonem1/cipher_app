@@ -1,3 +1,4 @@
+// features/the_vault/presentation/cubits/vault_state.dart
 import 'package:equatable/equatable.dart';
 
 enum VaultPhase { setup, passDevice, active, eliminated, failed, success }
@@ -8,12 +9,15 @@ class VaultState extends Equatable {
   final List<int> activePlayers;
   final int currentTurnIndex;
   final int timeRemaining;
-  final String enteredCode;
+  final List<String> currentChoices;
   final List<Map<String, dynamic>> questions;
   final int currentQuestionIndex;
   final List<int> playersUsedHint;
   final bool isHintRevealed;
   final Map<int, int> playerScores;
+  final List<String> categories;
+  final String selectedCategory;
+  final List<String> solvedQuestionsIds;
 
   const VaultState({
     this.phase = VaultPhase.setup,
@@ -21,12 +25,15 @@ class VaultState extends Equatable {
     this.activePlayers = const [],
     this.currentTurnIndex = 0,
     this.timeRemaining = 0,
-    this.enteredCode = '',
+    this.currentChoices = const [],
     this.questions = const [],
     this.currentQuestionIndex = 0,
     this.playersUsedHint = const [],
     this.isHintRevealed = false,
     this.playerScores = const {},
+    this.categories = const [],
+    this.selectedCategory = '',
+    this.solvedQuestionsIds = const [],
   });
 
   int get currentPlayerId =>
@@ -40,12 +47,15 @@ class VaultState extends Equatable {
     List<int>? activePlayers,
     int? currentTurnIndex,
     int? timeRemaining,
-    String? enteredCode,
+    List<String>? currentChoices,
     List<Map<String, dynamic>>? questions,
     int? currentQuestionIndex,
     List<int>? playersUsedHint,
     bool? isHintRevealed,
     Map<int, int>? playerScores,
+    List<String>? categories,
+    String? selectedCategory,
+    List<String>? solvedQuestionsIds,
   }) {
     return VaultState(
       phase: phase ?? this.phase,
@@ -53,12 +63,15 @@ class VaultState extends Equatable {
       activePlayers: activePlayers ?? this.activePlayers,
       currentTurnIndex: currentTurnIndex ?? this.currentTurnIndex,
       timeRemaining: timeRemaining ?? this.timeRemaining,
-      enteredCode: enteredCode ?? this.enteredCode,
+      currentChoices: currentChoices ?? this.currentChoices,
       questions: questions ?? this.questions,
       currentQuestionIndex: currentQuestionIndex ?? this.currentQuestionIndex,
       playersUsedHint: playersUsedHint ?? this.playersUsedHint,
       isHintRevealed: isHintRevealed ?? this.isHintRevealed,
       playerScores: playerScores ?? this.playerScores,
+      categories: categories ?? this.categories,
+      selectedCategory: selectedCategory ?? this.selectedCategory,
+      solvedQuestionsIds: solvedQuestionsIds ?? this.solvedQuestionsIds,
     );
   }
 
@@ -69,11 +82,14 @@ class VaultState extends Equatable {
         activePlayers,
         currentTurnIndex,
         timeRemaining,
-        enteredCode,
+        currentChoices,
         questions,
         currentQuestionIndex,
         playersUsedHint,
         isHintRevealed,
         playerScores,
+        categories,
+        selectedCategory,
+        solvedQuestionsIds,
       ];
 }

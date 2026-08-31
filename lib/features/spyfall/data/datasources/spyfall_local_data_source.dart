@@ -11,34 +11,117 @@ abstract class SpyfallLocalDataSource {
 @LazySingleton(as: SpyfallLocalDataSource)
 class SpyfallLocalDataSourceImpl implements SpyfallLocalDataSource {
   static const String _locationsKey = 'spyfall_locations';
+  static const String _cacheVersionKey = 'spyfall_cache_version';
+  static const int _currentCacheVersion = 2;
 
   static const List<SpyfallLocationModel> _seedLocations = [
-    SpyfallLocationModel(id: 'embassy', titleKey: 'spyfallLocationEmbassy', intelLevelKey: 'spyfallIntelHigh'),
-    SpyfallLocationModel(id: 'submarine', titleKey: 'spyfallLocationSubmarine', intelLevelKey: 'spyfallIntelCritical'),
-    SpyfallLocationModel(id: 'research_lab', titleKey: 'spyfallLocationResearchLab', intelLevelKey: 'spyfallIntelLow'),
-    SpyfallLocationModel(id: 'nightclub', titleKey: 'spyfallLocationNightclub', intelLevelKey: 'spyfallIntelMid'),
-    SpyfallLocationModel(id: 'secret_base', titleKey: 'spyfallLocationSecretBase', intelLevelKey: 'spyfallIntelConfirmed'),
-    SpyfallLocationModel(id: 'airport', titleKey: 'spyfallLocationAirport', intelLevelKey: 'spyfallIntelLow'),
-    SpyfallLocationModel(id: 'bank', titleKey: 'spyfallLocationBank', intelLevelKey: 'spyfallIntelHigh'),
-    SpyfallLocationModel(id: 'hospital', titleKey: 'spyfallLocationHospital', intelLevelKey: 'spyfallIntelMid'),
-    SpyfallLocationModel(id: 'space_station', titleKey: 'spyfallLocationSpaceStation', intelLevelKey: 'spyfallIntelCritical'),
-    SpyfallLocationModel(id: 'pirate_ship', titleKey: 'spyfallLocationPirateShip', intelLevelKey: 'spyfallIntelLow'),
-    SpyfallLocationModel(id: 'circus', titleKey: 'spyfallLocationCircus', intelLevelKey: 'spyfallIntelMid'),
-    SpyfallLocationModel(id: 'police_station', titleKey: 'spyfallLocationPoliceStation', intelLevelKey: 'spyfallIntelHigh'),
-    SpyfallLocationModel(id: 'school', titleKey: 'spyfallLocationSchool', intelLevelKey: 'spyfallIntelLow'),
-    SpyfallLocationModel(id: 'passenger_train', titleKey: 'spyfallLocationPassengerTrain', intelLevelKey: 'spyfallIntelMid'),
-    SpyfallLocationModel(id: 'haunted_house', titleKey: 'spyfallLocationHauntedHouse', intelLevelKey: 'spyfallIntelLow'),
-    SpyfallLocationModel(id: 'film_studio', titleKey: 'spyfallLocationFilmStudio', intelLevelKey: 'spyfallIntelMid'),
-    SpyfallLocationModel(id: 'arctic_station', titleKey: 'spyfallLocationArcticStation', intelLevelKey: 'spyfallIntelCritical'),
-    SpyfallLocationModel(id: 'museum', titleKey: 'spyfallLocationMuseum', intelLevelKey: 'spyfallIntelHigh'),
-    SpyfallLocationModel(id: 'stadium', titleKey: 'spyfallLocationStadium', intelLevelKey: 'spyfallIntelLow'),
-    SpyfallLocationModel(id: 'restaurant', titleKey: 'spyfallLocationRestaurant', intelLevelKey: 'spyfallIntelMid'),
-    SpyfallLocationModel(id: 'casino', titleKey: 'spyfallLocationCasino', intelLevelKey: 'spyfallIntelHigh'),
+    SpyfallLocationModel(
+      id: 'embassy',
+      titleKey: 'spyfallLocationEmbassy',
+      intelLevelKey: 'spyfallIntelHigh',
+    ),
+    SpyfallLocationModel(
+      id: 'submarine',
+      titleKey: 'spyfallLocationSubmarine',
+      intelLevelKey: 'spyfallIntelCritical',
+    ),
+    SpyfallLocationModel(
+      id: 'research_lab',
+      titleKey: 'spyfallLocationResearchLab',
+      intelLevelKey: 'spyfallIntelLow',
+    ),
+    SpyfallLocationModel(
+      id: 'secret_base',
+      titleKey: 'spyfallLocationSecretBase',
+      intelLevelKey: 'spyfallIntelConfirmed',
+    ),
+    SpyfallLocationModel(
+      id: 'airport',
+      titleKey: 'spyfallLocationAirport',
+      intelLevelKey: 'spyfallIntelLow',
+    ),
+    SpyfallLocationModel(
+      id: 'bank',
+      titleKey: 'spyfallLocationBank',
+      intelLevelKey: 'spyfallIntelHigh',
+    ),
+    SpyfallLocationModel(
+      id: 'hospital',
+      titleKey: 'spyfallLocationHospital',
+      intelLevelKey: 'spyfallIntelMid',
+    ),
+    SpyfallLocationModel(
+      id: 'space_station',
+      titleKey: 'spyfallLocationSpaceStation',
+      intelLevelKey: 'spyfallIntelCritical',
+    ),
+    SpyfallLocationModel(
+      id: 'pirate_ship',
+      titleKey: 'spyfallLocationPirateShip',
+      intelLevelKey: 'spyfallIntelLow',
+    ),
+    SpyfallLocationModel(
+      id: 'circus',
+      titleKey: 'spyfallLocationCircus',
+      intelLevelKey: 'spyfallIntelMid',
+    ),
+    SpyfallLocationModel(
+      id: 'police_station',
+      titleKey: 'spyfallLocationPoliceStation',
+      intelLevelKey: 'spyfallIntelHigh',
+    ),
+    SpyfallLocationModel(
+      id: 'school',
+      titleKey: 'spyfallLocationSchool',
+      intelLevelKey: 'spyfallIntelLow',
+    ),
+    SpyfallLocationModel(
+      id: 'passenger_train',
+      titleKey: 'spyfallLocationPassengerTrain',
+      intelLevelKey: 'spyfallIntelMid',
+    ),
+    SpyfallLocationModel(
+      id: 'haunted_house',
+      titleKey: 'spyfallLocationHauntedHouse',
+      intelLevelKey: 'spyfallIntelLow',
+    ),
+    SpyfallLocationModel(
+      id: 'film_studio',
+      titleKey: 'spyfallLocationFilmStudio',
+      intelLevelKey: 'spyfallIntelMid',
+    ),
+    SpyfallLocationModel(
+      id: 'arctic_station',
+      titleKey: 'spyfallLocationArcticStation',
+      intelLevelKey: 'spyfallIntelCritical',
+    ),
+    SpyfallLocationModel(
+      id: 'museum',
+      titleKey: 'spyfallLocationMuseum',
+      intelLevelKey: 'spyfallIntelHigh',
+    ),
+    SpyfallLocationModel(
+      id: 'stadium',
+      titleKey: 'spyfallLocationStadium',
+      intelLevelKey: 'spyfallIntelLow',
+    ),
+    SpyfallLocationModel(
+      id: 'restaurant',
+      titleKey: 'spyfallLocationRestaurant',
+      intelLevelKey: 'spyfallIntelMid',
+    ),
   ];
 
   @override
   Future<List<SpyfallLocationModel>> getLocations() async {
     final box = Hive.box(HiveService.gameBoxName);
+    
+    final storedVersion = box.get(_cacheVersionKey, defaultValue: 0) as int;
+    if (storedVersion < _currentCacheVersion) {
+      await _storeSeedLocations(box);
+      return _seedLocations;
+    }
+
     final cachedData = box.get(_locationsKey);
 
     if (cachedData is! List) {
@@ -59,8 +142,9 @@ class SpyfallLocalDataSourceImpl implements SpyfallLocalDataSource {
     return locations;
   }
 
-  Future<void> _storeSeedLocations(Box box) {
-    return box.put(
+  Future<void> _storeSeedLocations(Box box) async {
+    await box.put(_cacheVersionKey, _currentCacheVersion);
+    await box.put(
       _locationsKey,
       _seedLocations.map((e) => e.toJson()).toList(growable: false),
     );

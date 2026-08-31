@@ -5,52 +5,85 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../core/services/hive_service.dart';
+import '../../../../core/services/service_locator.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/l10n_extensions.dart';
 import '../../../game_sync/cubit/game_sync_cubit.dart';
 import '../../../game_sync/cubit/game_sync_state.dart';
 import '../../domain/entities/game_dossier_entity.dart';
 
-class HomeDossierCard extends StatelessWidget {
+class HomeDossierCard extends StatefulWidget {
   final GameDossierEntity dossier;
 
   const HomeDossierCard({required this.dossier, super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Check if the game is already downloaded and cached locally in Hive
-    final box = Hive.box(HiveService.gameBoxName);
-    final bool isDownloaded = box.containsKey(dossier.id);
+  State<HomeDossierCard> createState() => _HomeDossierCardState();
+}
 
-    return BlocProvider(
-      create: (context) => GameSyncCubit(),
+class _HomeDossierCardState extends State<HomeDossierCard> {
+  late GameSyncCubit _syncCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _syncCubit = getIt<GameSyncCubit>();
+
+    final box = Hive.box(HiveService.gameBoxName);
+    final bool isDownloaded = box.containsKey(widget.dossier.id);
+
+    if ((isDownloaded || widget.dossier.isActive) &&
+        widget.dossier.id != 'spyfall' &&
+        widget.dossier.id != 'charades') {
+      _syncCubit.fetchAndSyncGame(widget.dossier.id);
+    }
+  }
+
+  @override
+  void dispose() {
+    _syncCubit.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final box = Hive.box(HiveService.gameBoxName);
+    final bool isInitiallyDownloaded = box.containsKey(widget.dossier.id);
+
+    return BlocProvider.value(
+      value: _syncCubit,
       child: BlocConsumer<GameSyncCubit, GameSyncState>(
         listener: (context, state) {
-          if (state is GameSyncSuccess) {
-            // Once downloaded successfully, navigate to the game or refresh UI
+          if (state is GameSyncSuccess && state.isUpdated) {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Download complete! Tap again to play.'),
+              SnackBar(
+                content: Text(context.l10n.decrypted),
+                backgroundColor: Colors.green,
+                duration: const Duration(seconds: 2),
               ),
             );
           } else if (state is GameSyncError) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.message)));
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+                backgroundColor: AppColors.error,
+              ),
+            );
           }
         },
         builder: (context, state) {
           bool isDownloading = state is GameSyncLoading;
           bool isNewlyDownloaded = state is GameSyncSuccess;
 
-          bool readyToPlay =
-              isDownloaded || dossier.isActive || isNewlyDownloaded;
+          bool readyToPlay = isInitiallyDownloaded ||
+              widget.dossier.isActive ||
+              isNewlyDownloaded;
 
           return Container(
             decoration: BoxDecoration(
               color: AppColors.deepCharcoal,
               border: Border.all(
-                color: AppColors.metallicSilver.withValues(alpha: 0.2),
+                color: AppColors.metallicSilver.withOpacity(0.2),
                 width: 1,
               ),
             ),
@@ -103,19 +136,17 @@ class HomeDossierCard extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
                 Text(
-                  _localizedGameTitle(context, dossier),
+                  _localizedGameTitle(context, widget.dossier),
                   style: TextStyle(
                     fontFamily: 'Bebas Neue',
                     fontSize: 32.sp,
-                    color: readyToPlay
-                        ? AppColors.neonAmber
-                        : AppColors.outline,
+                    color: readyToPlay ? AppColors.neonAmber : AppColors.outline,
                     letterSpacing: 1.0,
                   ),
                 ),
                 SizedBox(height: 8.h),
                 Text(
-                  _localizedGameDescription(context, dossier),
+                  _localizedGameDescription(context, widget.dossier),
                   style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 14.sp,
@@ -140,7 +171,7 @@ class HomeDossierCard extends StatelessWidget {
                         ),
                         SizedBox(height: 2.h),
                         Text(
-                          _localizedPlayerCount(context, dossier),
+                          _localizedPlayerCount(context, widget.dossier),
                           style: TextStyle(
                             fontFamily: 'Bebas Neue',
                             fontSize: 14.sp,
@@ -162,7 +193,7 @@ class HomeDossierCard extends StatelessWidget {
                         ),
                         SizedBox(height: 2.h),
                         Text(
-                          _localizedDuration(context, dossier),
+                          _localizedDuration(context, widget.dossier),
                           style: TextStyle(
                             fontFamily: 'Bebas Neue',
                             fontSize: 14.sp,
@@ -182,12 +213,14 @@ class HomeDossierCard extends StatelessWidget {
                         ? null
                         : () {
                             if (readyToPlay) {
-                              context.push(dossier.route);
+                              context.push(widget.dossier.route);
                             } else {
-                              // Trigger download from Firebase via Cubit
-                              context.read<GameSyncCubit>().fetchAndSyncGame(
-                                dossier.id,
-                              );
+                              if (widget.dossier.id != 'spyfall' &&
+                                  widget.dossier.id != 'charades') {
+                                _syncCubit.fetchAndSyncGame(
+                                  widget.dossier.id,
+                                );
+                              }
                             }
                           },
                     style: ElevatedButton.styleFrom(
@@ -224,9 +257,7 @@ class HomeDossierCard extends StatelessWidget {
                                 ),
                                 SizedBox(width: 8.w),
                                 Icon(
-                                  readyToPlay
-                                      ? Icons.play_arrow
-                                      : Icons.download,
+                                  readyToPlay ? Icons.play_arrow : Icons.download,
                                   size: 18,
                                 ),
                               ],
@@ -242,7 +273,6 @@ class HomeDossierCard extends StatelessWidget {
     );
   }
 
-  // Replace the helper methods at the bottom of the file with these:
   String _localizedGameTitle(BuildContext context, GameDossierEntity game) {
     switch (game.id) {
       case 'spyfall':

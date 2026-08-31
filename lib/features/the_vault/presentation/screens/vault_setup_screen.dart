@@ -8,8 +8,22 @@ import '../cubits/vault_cubit.dart';
 import '../cubits/vault_state.dart';
 import '../widgets/vault_app_bar.dart';
 
-class VaultSetupScreen extends StatelessWidget {
+class VaultSetupScreen extends StatefulWidget {
   const VaultSetupScreen({super.key});
+
+  @override
+  State<VaultSetupScreen> createState() => _VaultSetupScreenState();
+}
+
+class _VaultSetupScreenState extends State<VaultSetupScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final langCode = Localizations.localeOf(context).languageCode;
+      context.read<VaultCubit>().loadGameData(langCode);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +33,7 @@ class VaultSetupScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const VaultAppBar(),
-        SizedBox(height: 24.h),
+        SizedBox(height: 12.h),
         Text(
           context.l10n.vaultTitle,
           style: TextStyle(
@@ -46,7 +60,63 @@ class VaultSetupScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 48.h),
+        SizedBox(height: 24.h),
+        BlocBuilder<VaultCubit, VaultState>(
+          builder: (context, state) {
+            if (state.categories.isEmpty) {
+              return const SizedBox();
+            }
+            return ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 140.h),
+              child: SingleChildScrollView(
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                  child: Wrap(
+                    spacing: 8.w,
+                    runSpacing: 8.h,
+                    alignment: WrapAlignment.center,
+                    children: state.categories.map((category) {
+                      final isSelected = state.selectedCategory == category;
+                      return GestureDetector(
+                        onTap: () => cubit.selectCategory(category),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                            vertical: 8.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: isSelected
+                                ? AppColors.neonAmber
+                                : AppColors.surfaceContainerHigh,
+                            borderRadius: BorderRadius.circular(20.r),
+                            border: Border.all(
+                              color: isSelected
+                                  ? AppColors.neonAmber
+                                  : AppColors.outlineVariant,
+                            ),
+                          ),
+                          child: Text(
+                            category,
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold,
+                              color: isSelected
+                                  ? AppColors.pitchBlack
+                                  : AppColors.onSurface,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+        SizedBox(height: 24.h),
         Container(
           width: double.infinity,
           padding: EdgeInsets.all(20.w),

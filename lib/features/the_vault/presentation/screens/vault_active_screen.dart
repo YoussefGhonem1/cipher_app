@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/utils/l10n_extensions.dart';
 import '../cubits/vault_cubit.dart';
 import '../cubits/vault_state.dart';
-import '../widgets/vault_numpad.dart';
 
 class VaultActiveScreen extends StatelessWidget {
   const VaultActiveScreen({super.key});
@@ -20,19 +18,20 @@ class VaultActiveScreen extends StatelessWidget {
         final minutes = (state.timeRemaining ~/ 60).toString().padLeft(2, '0');
         final seconds = (state.timeRemaining % 60).toString().padLeft(2, '0');
 
-        final currentQuestion = state.questions.isNotEmpty 
-            ? state.questions[state.currentQuestionIndex] 
+        final currentQuestion = state.questions.isNotEmpty
+            ? state.questions[state.currentQuestionIndex]
             : null;
 
         final clueText = currentQuestion?['clue'] ?? '';
         final hintText = currentQuestion?['hint'] ?? '';
-        final instructionText = currentQuestion?['instruction'] ?? context.l10n.vaultDecryptionClue;
-        final answerLength = currentQuestion?['answer']?.length ?? 4;
+        final instructionText =
+            currentQuestion?['instruction'] ?? context.l10n.vaultDecryptionClue;
 
-        final displayCode = state.enteredCode
-            .padRight(answerLength, '_')
-            .split('')
-            .join(' ');
+        final sharedDecoration = BoxDecoration(
+          color: AppColors.deepCharcoal.withOpacity(0.6),
+          border: Border.all(color: AppColors.outlineVariant, width: 1.5),
+          borderRadius: BorderRadius.circular(12.r),
+        );
 
         return Column(
           children: [
@@ -42,6 +41,7 @@ class VaultActiveScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.errorContainer.withOpacity(0.2),
                 border: Border.all(color: AppColors.errorContainer),
+                borderRadius: BorderRadius.circular(4.r),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -88,121 +88,150 @@ class VaultActiveScreen extends StatelessWidget {
               margin: EdgeInsets.only(top: 8.h, bottom: 16.h),
               alignment: Alignment.centerLeft,
             ),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(12.w),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.outlineVariant),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.vpn_key_outlined,
-                        color: AppColors.neonAmber,
-                        size: 14,
-                      ),
-                      SizedBox(width: 6.w),
-                      Text(
-                        instructionText,
-                        style: TextStyle(
-                          fontFamily: 'Bebas Neue',
-                          fontSize: 16.sp,
-                          color: AppColors.neonAmber,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  Text(
-                    clueText,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Courier Prime',
-                      fontSize: 18.sp,
-                      color: AppColors.onSurface,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-                  SizedBox(height: 16.h),
-                  GestureDetector(
-                    onTap: () {
-                      if (!state.isHintRevealed && !state.playersUsedHint.contains(state.currentPlayerId)) {
-                        cubit.revealHint();
-                      }
-                    },
-                    child: Opacity(
-                      opacity: state.isHintRevealed ? 1.0 : 0.3,
-                      child: Text(
-                        state.isHintRevealed
-                            ? '${context.l10n.vaultHintPrefix}$hintText'
-                            : '❖ ❖ ❖ ❖ ❖',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'Courier Prime',
-                          fontSize: state.isHintRevealed ? 10.sp : 12.sp,
-                          color: AppColors.outline,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 12.h),
             Expanded(
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-                decoration: BoxDecoration(
-                  color: AppColors.surfaceContainerLow,
-                  border: Border.all(color: AppColors.outlineVariant),
-                ),
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       width: double.infinity,
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: AppColors.neonAmber,
-                            width: 2,
+                      padding: EdgeInsets.all(20.w),
+                      decoration: sharedDecoration,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Icons.vpn_key_outlined,
+                                color: AppColors.neonAmber,
+                                size: 16,
+                              ),
+                              SizedBox(width: 8.w),
+                              Text(
+                                instructionText,
+                                style: TextStyle(
+                                  fontFamily: 'Bebas Neue',
+                                  fontSize: 18.sp,
+                                  color: AppColors.neonAmber,
+                                  letterSpacing: 1.5,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ),
-                      alignment: Alignment.center,
-                      child: Directionality(
-                        textDirection: TextDirection.ltr,
-                        child: Text(
-                          displayCode,
-                          style: TextStyle(
-                            fontFamily: 'Courier Prime',
-                            fontSize: 32.sp,
-                            color: AppColors.neonAmber,
-                            letterSpacing: 12.0,
+                          SizedBox(height: 16.h),
+                          Text(
+                            clueText,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'Courier Prime',
+                              fontSize: 18.sp,
+                              color: AppColors.onSurface,
+                              letterSpacing: 1.0,
+                              height: 1.4,
+                            ),
                           ),
-                        ),
+                          SizedBox(height: 16.h),
+                          GestureDetector(
+                            onTap: () {
+                              if (!state.isHintRevealed &&
+                                  !state.playersUsedHint.contains(
+                                    state.currentPlayerId,
+                                  )) {
+                                cubit.revealHint();
+                              }
+                            },
+                            child: Opacity(
+                              opacity: state.isHintRevealed ? 1.0 : 0.4,
+                              child: Text(
+                                state.isHintRevealed
+                                    ? '${context.l10n.vaultHintPrefix}$hintText'
+                                    : '❖ ❖ ❖ ❖ ❖',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: 'Courier Prime',
+                                  fontSize: state.isHintRevealed
+                                      ? 12.sp
+                                      : 14.sp,
+                                  color: AppColors.outline,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    VaultNumpad(
-                      onDigitPress: cubit.addDigit,
-                      onClearPress: cubit.clearCode,
-                      onSubmitPress: cubit.submitCode,
-                    ),
-                    Text(
-                      context.l10n.vaultConnectionSecure,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Courier Prime',
-                        fontSize: 8.sp,
-                        color: AppColors.outline,
+                    SizedBox(height: 16.h),
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(20.w),
+                      decoration: sharedDecoration,
+                      child: Column(
+                        children: [
+                          GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 12.w,
+                                  mainAxisSpacing: 12.h,
+                                  childAspectRatio: 2.2,
+                                ),
+                            itemCount: state.currentChoices.length,
+                            itemBuilder: (context, index) {
+                              final choice = state.currentChoices[index];
+                              return ElevatedButton(
+                                onPressed: () => cubit.submitAnswer(choice),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      AppColors.surfaceContainerHigh,
+                                  foregroundColor: AppColors.neonAmber,
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    side: const BorderSide(
+                                      color: AppColors.outlineVariant,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 4.w,
+                                    vertical: 4.h,
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      choice,
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                          SizedBox(height: 24.h),
+                          Text(
+                            context.l10n.vaultConnectionSecure,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontFamily: 'Courier Prime',
+                              fontSize: 10.sp,
+                              color: AppColors.outline,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    SizedBox(height: 16.h),
                   ],
                 ),
               ),
